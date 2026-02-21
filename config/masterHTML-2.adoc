@@ -1,0 +1,15 @@
+= Litt om CSS
+Jan R Sandbakken <mailjaro@gmail.com>
+v1.0 2026-02-19
+:description: Dette heftet tar for seg grunnleggende CSS
+:doctype: book
+:icons: font
+:toc: left
+:toc-title: Innholdsfortegnelse
+:toclevels: 4
+:sectanchors:
+:source-highlighter: rouge
+
+image::../images/css-cover.png[role=cover,align=center]
+
+include::../css-2.adoc[]
