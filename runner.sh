@@ -20,15 +20,18 @@ asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
 
 cp css-1.adoc css-2.adoc
 sd '\[source,text\]' '[%unbreakable]\n[source,text]' css-2.adoc
-sd '\[source,json\]' '[%unbreakable]\n[source,json]' css-2.adoc
-sd '📘 ' '' css-2.adoc
+sd '\[source,css\]' '[%unbreakable]\n[source,css]' css-2.adoc
+sd '\[source,html\]' '[%unbreakable]\n[source,html]' css-2.adoc
+sd '📝 ' '' css-2.adoc
+sd '🌐 ' '' css-2.adoc
+sd '👉 ' '' css-2.adoc
+sd '🎨 ' '' css-2.adoc
 sd '⚙️ ' '' css-2.adoc
-sd '🧩 ' '' css-2.adoc
-sd '📄 ' '' css-2.adoc
-sd '📁 ' '' css-2.adoc
-sd '📂 ' '' css-2.adoc
-sd '🔑 ' '' css-2.adoc
-sd '1️⃣ ' '1. ' css-2.adoc
+sd '📦 ' '' css-2.adoc
+sd '📐 ' '' css-2.adoc
+sd '📏 ' '' css-2.adoc
+sd '🖼️ ' '' css-2.adoc
+sd '🏷️ ' '1. ' css-2.adoc
 sd '2️⃣ ' '2. ' css-2.adoc
 sd '3️⃣ ' '3. ' css-2.adoc
 sd '4️⃣ ' '4. ' css-2.adoc

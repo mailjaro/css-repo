@@ -436,6 +436,124 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -448,7 +566,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Innholdsfortegnelse</div>
 <ul class="sectlevel1">
-<li><a href="#_litt_om_css">📘 Litt om CSS</a></li>
+<li><a href="#_litt_om_css">📝 Litt om CSS</a>
+<ul class="sectlevel2">
+<li><a href="#_overordnet_html">🌐 Overordnet HTML</a></li>
+<li><a href="#_hva_er_css">🎨 Hva er CSS?</a></li>
+<li><a href="#_️_globale_ccs_settinger">⚙️ Globale CCS-settinger</a></li>
+<li><a href="#_boksmodellen">📦 Boksmodellen</a>
+<ul class="sectlevel3">
+<li><a href="#_px">📐 px</a></li>
+<li><a href="#_rem_og_em">📐 rem og em</a></li>
+<li><a href="#">📐 %</a></li>
+<li><a href="#_vw_og_vh">📐 vw og vh</a></li>
+</ul>
+</li>
+<li><a href="#_content_box_vs_border_box">📏 Content box vs Border box</a></li>
+<li><a href="#_️_display">🖼️ Display</a></li>
+<li><a href="#_️_id_og_class">🏷️ ID og Class</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -463,20 +598,584 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_litt_om_css"><a class="anchor" href="#_litt_om_css"></a>📘 Litt om CSS</h2>
+<h2 id="_litt_om_css"><a class="anchor" href="#_litt_om_css"></a>📝 Litt om CSS</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_overordnet_html"><a class="anchor" href="#_overordnet_html"></a>🌐 Overordnet HTML</h3>
 <div class="paragraph">
-<p>Her er det litt tekst</p>
+<p>Et HTML-dokument kan strukturelt sett se slik ut:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">&lt;html&gt;
+ ├── &lt;head&gt; … metadata, CSS, title …
+ └── &lt;body&gt; ── hele synlige innholdet på siden
+       ├── &lt;header&gt; … toppbanner, logo, navigasjon …
+       ├── &lt;nav&gt; … hovedmeny, lenker …
+       ├── &lt;main&gt; … hovedinnholdet, unikt for denne siden
+       │     ├── &lt;section&gt; … logisk gruppering av innhold
+       │     ├── &lt;article&gt; … en artikkel, blogginnlegg, etc.
+       │     └── &lt;div&gt; … ekstra beholder for styling/layout
+       ├── &lt;aside&gt; … sidepanel, ekstra info, reklame …
+       └── &lt;footer&gt; … bunntekst, copyright, kontaktinfo …</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Her er et HTML-eksempel, med syntaks og viktige elementer:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Litt om CSS<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"style.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;header&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Litt om CSS<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Av Jan R Sandbakken<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/header&gt;</span>
+
+    <span class="nt">&lt;main&gt;</span>
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>Introduksjon<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Dette er et eksempel på et avsnitt i HTML.<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;pre&gt;</span>
+Dette er preformatert tekst.
+Beholder mellomrom og linjeskift.
+            <span class="nt">&lt;/pre&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>Eksempel på div<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"boks"</span><span class="nt">&gt;</span>
+                Dette er en div som ofte brukes for å style grupper av innhold.
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;/main&gt;</span>
+
+    <span class="nt">&lt;footer&gt;</span>
+        <span class="nt">&lt;p&gt;</span><span class="ni">&amp;copy;</span> 2026 Jan R Sandbakken<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/footer&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Forklaring:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>⚙️ CSS-instillinger</p>
+<p><code>&lt;header&gt;</code> – overskriftsseksjon på toppen av dokumentet</p>
 </li>
 <li>
-<p>🧩 CSS- Utvidelser</p>
+<p><code>&lt;body&gt;</code> – alt det synlige innholdet (inkl. header, footer, sidepanel &#8230;&#8203;)</p>
+</li>
+<li>
+<p><code>&lt;main&gt;</code> – hovedinnhold</p>
+</li>
+<li>
+<p><code>&lt;section&gt;</code> – logiske grupper av innhold (f.eks. kapitler, emner)</p>
+</li>
+<li>
+<p><code>&lt;div&gt;</code> – generell beholder. Brukes for layout og styling</p>
+</li>
+<li>
+<p><code>&lt;p&gt;</code> – avsnitt</p>
+</li>
+<li>
+<p><code>&lt;pre&gt;</code> – preformatert tekst, beholder linjeskift og mellomrom</p>
+</li>
+<li>
+<p><code>&lt;footer&gt;</code> – bunntekst</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>👉 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hva_er_css"><a class="anchor" href="#_hva_er_css"></a>🎨 Hva er CSS?</h3>
+<div class="paragraph">
+<p>CSS står for <em>Cascading Style Sheets</em>, som representerer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cascading → Regler “kaskaderer”, dvs. nye regler kan overstyre gamle basert på spesifisitet og rekkefølge.</p>
+</li>
+<li>
+<p>Style → Angir hvordan elementer ser ut: farge, størrelse, plassering, marg, osv.</p>
+</li>
+<li>
+<p>Sheets → Samles i en fil (ofte style.css) og kobles til HTML.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hvordan CSS henger sammen med HTML</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Selektor – hva du vil style (f.eks. <strong>p</strong>, <strong>.boks</strong>, <strong>#header</strong>)</p>
+</li>
+<li>
+<p>Egenskap – hva du vil endre (f.eks. <strong>color</strong>, <strong>font-size</strong>, <strong>margin</strong>)</p>
+</li>
+<li>
+<p>Verdi – hvordan du vil endre det (f.eks. blue, 1.2rem, 10px)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Eksempel:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="c">/* Stiler alle avsnitt */</span>
+<span class="nt">p</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">darkblue</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.5</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Stiler alt med klasse "boks" */</span>
+<span class="nc">.boks</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nx">#f0f0f0</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">1rem</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nx">#ccc</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Hovedprinsippene er at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CSS separerer struktur (HTML) fra utseende (CSS) → lettere vedlikehold.</p>
+</li>
+<li>
+<p>En regel består alltid av selektor + deklarasjonsblokk</p>
+</li>
+<li>
+<p>CSS arves nedover i dokumentet (f.eks. <code>color</code> fra <code>&lt;body&gt;</code> arves til <code>&lt;p&gt;</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Konstruksjonen som bestemmer verdier, ser generelt slik ut:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">selektor</span> <span class="p">{</span>
+    <span class="py">egenskap</span><span class="p">:</span> <span class="n">verdi</span><span class="p">;</span>
+    <span class="py">egenskap</span><span class="p">:</span> <span class="n">verdi</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ved at</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>selektor</strong> (selector) bestemmer hvilke HTML-elementer regelen gjelder for</p>
+</li>
+<li>
+<p><strong>\{ &#8230;&#8203; }</strong> Regelblokk (rule block) inneholder én eller flere deklarasjoner</p>
+</li>
+<li>
+<p><strong>egenskap</strong> (property) angir hva vil endre (f.eks. margin eller display)</p>
+</li>
+<li>
+<p><strong>verdi</strong> (value) er verdien man setter på egenskapen (f.eks. red eller 10px)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Når det gjelder arv, er det slik at noen egenskaper arves (som <code>color</code>) og andre ikke (som <code>padding</code>), og i tillegg er det et arvehierarki som gjelder I HTML/CSS (som f.eks <code>&lt;body&gt;</code> → <code>&lt;div&gt;</code> → <code>&lt;p&gt;</code>). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN CSS Reference</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS Specification (W3C)</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_️_globale_ccs_settinger"><a class="anchor" href="#_️_globale_ccs_settinger"></a>⚙️ Globale CCS-settinger</h3>
+<div class="paragraph">
+<p>Her ser vi eksempel på noen globale settinger</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">html</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">16px</span><span class="p">;</span> <span class="c">/* gir grunnstørrelse for rem */</span>
+<span class="p">}</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="n">system-ui</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span> <span class="c">/* lettlest standardfont */</span>
+    <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.6</span><span class="p">;</span>                   <span class="c">/* behagelig linjeavstand */</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">#222</span><span class="p">;</span>                      <span class="c">/* tekstfarge */</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="nx">#f5f5f5</span><span class="p">;</span>        <span class="c">/* bakgrunnsfarge */</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I HTML settes ting som bør være globalt, men sjelden knyttes til visuelt design. HTML-settinger er typisk språk og metadata, globale layout-verdier, scroll-behavior etc.</p>
+</div>
+<div class="paragraph">
+<p>BODY representerer det synlig innholdet, laget som faktisk tegnes i vinduet. Her er det typisk å sette bakgrunnsfarge, font-family, fontfarge, marger og padding, layout-begrensning som max-width mm. BODY representerer hele sider, inklusive sidepanel, <em>footer</em> og <em>header</em> mm, og dette styrer hva som er naturlig å sette her og f.eks. ikke i MAIN (som representerer hovedinnholdet, og som <em>kan</em> ha egen bakgrunnsfarge, marger etc. uten å påvirke topp og bunn og sidepanel fra BODY, hvis ønskelig). Følgende figur illustrerer situasjonen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">+------------------------------------------------------+
+|                      &lt;body&gt;                          |
+|  +------------------------------------------------+  |
+|  |                   &lt;header&gt;                     |  |
+|  |   Logo / Tittel / Toppmeny                     |  |
+|  +------------------------------------------------+  |
+|                                                      |
+|  +--------------------+--------------------------+   |
+|  |       &lt;aside&gt;      |         &lt;main&gt;           |   |
+|  |   Sidepanel        |   Hovedinnhold           |   |
+|  |   - Lenker         |   - Artikkel             |   |
+|  |   - Ekstra info    |   - Seksjoner            |   |
+|  |                    |   - Bilder               |   |
+|  +--------------------+--------------------------+   |
+|                                                      |
+|  +------------------------------------------------+  |
+|  |                   &lt;footer&gt;                     |  |
+|  |   Copyright / Kontakt / Metadata               |  |
+|  +------------------------------------------------+  |
++------------------------------------------------------+</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_boksmodellen"><a class="anchor" href="#_boksmodellen"></a>📦 Boksmodellen</h3>
+<div class="paragraph">
+<p>De fleste elementer har boksegenskaper, f.eks. overskrifter, <strong>p</strong>, <strong>div</strong>, <strong>span</strong>, <strong>section</strong>, <strong>article</strong>, <strong>image</strong> m.fl. Dvs de kan ha marger, rammer og ulike former for luft rundt seg. Dette er konkret vist i figuren under.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">+-----------------------------------------------------------+
+|                         MARGIN                            |
+|                                                           |
+|   +---------------------------------------------------+   |
+|   |                     BORDER                        |   |
+|   |                                                   |   |
+|   |   +-------------------------------------------+   |   |
+|   |   |                 PADDING                   |   |   |
+|   |   |                                           |   |   |
+|   |   |   +-----------------------------------+   |   |   |
+|   |   |   |             Innhold               |   |   |   |
+|   |   |   |        (WIDTH / HEIGHT)           |   |   |   |
+|   |   |   +-----------------------------------+   |   |   |
+|   |   |                                           |   |   |
+|   |   +-------------------------------------------+   |   |
+|   |                                                   |   |
+|   +---------------------------------------------------+   |
+|                                                           |
++-----------------------------------------------------------+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>👉 Måter å spesifisere størrelse på er: <strong>px</strong>, <strong>em</strong>, <strong>rem</strong>, <strong>%</strong>, <strong>vw</strong>, <strong>vh</strong></p>
+</div>
+<div class="paragraph">
+<p>👉 De brukes på ikke bare på <strong>margin</strong>, <strong>padding</strong> osv, men også på <strong>width</strong>, <strong>font-size</strong> o.l.</p>
+</div>
+<div class="paragraph">
+<p><strong>px</strong> og <strong>em</strong> er de klart vanligste.</p>
+</div>
+<div class="sect3">
+<h4 id="_px"><a class="anchor" href="#_px"></a>📐 px</h4>
+<div class="paragraph">
+<p>Verdier kan settes direkte, som her:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Men siden disse elementene angir luft på flere sider, kan angi flere verdier samtidig, og der rekkefølge av tallene (top → right → bottom → left, med klokka) angir :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span> <span class="m">30px</span> <span class="m">40px</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">           10px
+   40px            20px
+           30px</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Man har også definert betydningen</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>                   <span class="c">/* alle */</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span><span class="p">;</span>              <span class="c">/* T/B  R/L */</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span> <span class="m">30px</span><span class="p">;</span>         <span class="c">/* T  R/L  B */</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span> <span class="m">30px</span> <span class="m">40px</span><span class="p">;</span>    <span class="c">/* T  R  B  left */</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Videre har man mulighet for å bruke <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code> og <code>margin-left</code> også, og det tilsvarende også for <code>padding</code> og <code>border</code>. Men sistnevnt består egentlig av tre deler,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>width</code></p>
+</li>
+<li>
+<p><code>style</code></p>
+</li>
+<li>
+<p><code>color</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>for tykkelse, rammestil og farge, så disse ser dermed slik ut:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">border-top-width:
+border-top-style:
+border-top-color:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>osv.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_rem_og_em"><a class="anchor" href="#_rem_og_em"></a>📐 rem og em</h4>
+<div class="paragraph">
+<p><strong>rem</strong> og <strong>em</strong> angir størrelse relativt ift. font-size hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet).</p>
+</div>
+<div class="paragraph">
+<p>1em = 1 × gjeldende font-size, 2em = 2 × gjeldende font-size osv.</p>
+</div>
+<div class="paragraph">
+<p>Mer konkret:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>font-size → baseres på forelder</p>
+</li>
+<li>
+<p>padding og margin etc → baseres på elementets egen beregnede font-size</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hvis ingen font-size er eksplisitt satt, brukes nettleserens standardverdi, som ofte er 16px.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id=""><a class="anchor" href="#"></a>📐 %</h4>
+<div class="paragraph">
+<p>Prosent er relativ til foreldreelementet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">800px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.box</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vw_og_vh"><a class="anchor" href="#_vw_og_vh"></a>📐 vw og vh</h4>
+<div class="paragraph">
+<p><strong>vw</strong> og <strong>vh</strong> står for hhv. vertikal og horisontal viewport.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1vw = 1% av skjermes bredde i px</p>
+</li>
+<li>
+<p>1vh = 1% av skjermen bredde i px høyde</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50vw</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100vh</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alle typer angivelse kan blandes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">20rem</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">2em</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">5%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">50vh</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_content_box_vs_border_box"><a class="anchor" href="#_content_box_vs_border_box"></a>📏 Content box vs Border box</h3>
+<div class="paragraph">
+<p>Vi har to typer bokser, <em>content</em> og <em>border box</em>. For en contentbox (som er default) av en spesifikk størrelse kommer padding og border i tillegg for den endelig størrelsen av boksen. For border-box er spesifikk størrelse den faktisk størrelse. (Margin gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="c">/* content-box: standard */</span>
+<span class="nt">div</span><span class="nc">.content-box</span> <span class="p">{</span>
+  <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">content-box</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="nx">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* border-box: praktisk for layout */</span>
+<span class="nt">div</span><span class="nc">.border-box</span> <span class="p">{</span>
+  <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">border-box</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="nx">black</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_️_display"><a class="anchor" href="#_️_display"></a>🖼️ Display</h3>
+<div class="paragraph">
+<p>Blokker kan også vises på ulike måter. De kan vises under hverandre eller ved siden av hverandre, hvilket styres med ulike valg for display:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>display: block</code></p>
+</li>
+<li>
+<p><code>display: inline</code></p>
+</li>
+<li>
+<p><code>display: inline-block</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Det fins i tillegg to valg <code>flex</code> og <code>grid</code> som vi evt. behandler senere.</p>
+</div>
+<div class="paragraph">
+<p>Betydningen er som følger:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blokk-elementer legger seg under hverandre</p>
+</li>
+<li>
+<p>Inline-elementer legger seg ved siden av hverandre</p>
+</li>
+<li>
+<p>Inline-block gjør det samme, men respekterer width/height</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En <code>display: block</code> starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code> og <code>border</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">BLOCK-ELEMENTER
+
++---------------------------+
+|           div             |
++---------------------------+
+
++---------------------------+
+|           div             |
++---------------------------+
+
++---------------------------+
+|           div             |
++---------------------------+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>display: inline</code> gir inline-elementer. Den starter ikke på ny linje, de legger seg ved siden av hverandre, flyter inni tekstlinjen og ignorerer <code>width</code> og <code>height</code> (dvs. at høyde og bredde tilpasses innholdet). Den respekterer heller ikke vertikal margin/padding slik blokker gjør.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">+---------+  +---------+  +---------+
+|  box 1  |  |  box 2  |  |  box 3  |
++---------+  +---------+  +---------+</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>display: inline-block</code> er lik, bare at den respekterer <code>width</code>, <code>height</code>, <code>margin</code> og <code>padding</code> fullt ut</p>
+</div>
+<div class="paragraph">
+<p>Margin skaper avstand mellom alle disse.</p>
+</div>
+<div class="paragraph">
+<p>👉 Normal flyt – blokk</p>
+</div>
+<div class="paragraph">
+<p>Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.</p>
+</div>
+<div class="paragraph">
+<p>👉 Normal flyt – inline</p>
+</div>
+<div class="paragraph">
+<p>Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.</p>
+</div>
+<div class="paragraph">
+<p>Normal flyt kan endres med <code>position</code>, <code>float</code>, <code>flex</code> og <code>grid</code>, som gir alternative måter å plassere elementer på.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_️_id_og_class"><a class="anchor" href="#_️_id_og_class"></a>🏷️ ID og Class</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">id  &gt;  class  &gt;  element</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>

@@ -1,7 +1,7 @@
-# 📘 Litt om CSS
+# 📝 Litt om CSS
 
 
-## Overordnet HTML
+## 🌐 Overordnet HTML
 
 Et HTML-dokument kan strukturelt sett se slik ut:
 
@@ -74,7 +74,7 @@ Forklaring:
 
 👉 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.
 
-## Hva er CSS?
+## 🎨 Hva er CSS?
 
 CSS står for *Cascading Style Sheets*, som representerer:
 
@@ -115,7 +115,7 @@ Hovedprinsippene er at:
 
 - CSS arves nedover i dokumentet (f.eks. `color` fra `<body>` arves til `<p>`)
 
-Vi har sett eksempel på selektor og deklarasjonsblokk allerede. Den har formen:
+Konstruksjonen som bestemmer verdier, ser generelt slik ut:
 
 ```css
 selektor {
@@ -124,12 +124,19 @@ selektor {
 }
 ```
 
-Når det gjelder arv,  er slik at noen egenskaper arves (som `color`) og andre ikke (som `padding`), og i tillegg er det et arvehierarki som gjelder (som f.eks `<body>` → `<div>` → `<p>`). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på
+ved at
+
+- **selektor** (selector) bestemmer hvilke HTML-elementer regelen gjelder for
+- **{ ... }** Regelblokk (rule block) inneholder én eller flere deklarasjoner
+- **egenskap** (property) angir hva vil endre (f.eks. margin eller display)
+- **verdi** (value)	er verdien man setter på egenskapen (f.eks. red eller 10px)
+
+Når det gjelder arv, er det slik at noen egenskaper arves (som `color`) og andre ikke (som `padding`), og i tillegg er det et arvehierarki som gjelder I HTML/CSS (som f.eks `<body>` → `<div>` → `<p>`). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på
 
 - [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 - [CSS Specification (W3C)](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 
-## Globale CCS-settinger
+## ⚙️ Globale CCS-settinger
 
 Her ser vi eksempel på noen globale settinger
 
@@ -173,13 +180,11 @@ BODY representerer det synlig innholdet, laget som faktisk tegnes i vinduet. Her
 +------------------------------------------------------+
 ```
 
-## Boksmodellen
+## 📦 Boksmodellen
 
 De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **span**, **section**, **article**, **image** m.fl. Dvs de kan ha marger, rammer og ulike former for luft rundt seg. Dette er konkret vist i figuren under.
 
 ```text
-[source]
-----
 +-----------------------------------------------------------+
 |                         MARGIN                            |
 |                                                           |
@@ -199,7 +204,6 @@ De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **s
 |   +---------------------------------------------------+   |
 |                                                           |
 +-----------------------------------------------------------+
-----
 ```
 
 👉 Måter å spesifisere størrelse på er: **px**, **em**, **rem**, **%**, **vw**, **vh**
@@ -208,7 +212,7 @@ De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **s
 
 **px** og **em** er de klart vanligste.
 
-### 📌 px
+### 📐 px
 
 Verdier kan settes direkte, som her:
 
@@ -222,7 +226,9 @@ div {
 Men siden disse elementene angir luft på flere sider, kan angi flere verdier samtidig, og der rekkefølge av tallene (top → right → bottom → left, med klokka) angir :
 
 ```css
-margin: 10px 20px 30px 40px;
+div {
+  margin: 10px 20px 30px 40px;
+}
 ```
 ```text
 
@@ -242,7 +248,23 @@ div {
 }
 ```
 
-### 📌 rem og em
+Videre har man mulighet for å bruke `margin-top`, `margin-right`, `margin-bottom` og `margin-left` også, og det tilsvarende også for `padding` og `border`. Men sistnevnt består egentlig av tre deler,
+
+- `width`
+- `style`
+- `color`
+
+for tykkelse, rammestil og farge, så disse ser dermed slik ut:
+
+```text
+border-top-width:
+border-top-style:
+border-top-color:
+```
+
+osv.
+
+### 📐 rem og em
 
 **rem** og **em** angir størrelse relativt ift. font-size hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet). 
 
@@ -255,7 +277,7 @@ Mer konkret:
 
 Hvis ingen font-size er eksplisitt satt, brukes nettleserens standardverdi, som ofte er 16px.
 
-### 📌 %
+### 📐 %
 
 Prosent er relativ til foreldreelementet.
 
@@ -269,7 +291,7 @@ Prosent er relativ til foreldreelementet.
 }
 ```
 
-### 📌 vw og vh
+### 📐 vw og vh
 
 **vw** og **vh** står for hhv. vertikal og horisontal viewport.
 
@@ -294,7 +316,7 @@ div {
 }
 ```
 
-##  Content box vs  Border box
+## 📏 Content box vs Border box
 
 Vi har to typer bokser, *content* og *border box*. For en contentbox (som er default) av en spesifikk størrelse kommer padding og border i tillegg for den endelig størrelsen av boksen. For border-box er spesifikk størrelse den faktisk størrelse. (Margin gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)
 
@@ -318,22 +340,64 @@ div.border-box {
 
 Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.
 
-## Boksplassering / Display
+## 🖼️ Display
 
-display: block
+Blokker kan også vises på ulike måter. De kan vises under hverandre eller ved siden av hverandre, hvilket styres med ulike valg for display:
 
-display: inline
+- `display: block`
+- `display: inline`
+- `display: inline-block`
 
-display: inline-block
+Det fins i tillegg to valg `flex` og `grid` som vi evt. behandler senere.
 
-(senere: flex og grid)
-
-Dette er helt sentralt fordi:
+Betydningen er som følger:
 
 - Blokk-elementer legger seg under hverandre
-
 - Inline-elementer legger seg ved siden av hverandre
+- Inline-block gjør det samme, men respekterer width/height
+  
+En `display: block` starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både `width`, `height`, `margin`, `padding` og `border`.
 
-- Inline ignorerer width/height
+```text
+BLOCK-ELEMENTER
 
-- Inline-block kan få width/height
++---------------------------+
+|           div             |
++---------------------------+
+
++---------------------------+
+|           div             |
++---------------------------+
+
++---------------------------+
+|           div             |
++---------------------------+
+```
+
+`display: inline` gir inline-elementer. Den starter ikke på ny linje, de legger seg ved siden av hverandre, flyter inni tekstlinjen og ignorerer `width` og `height` (dvs. at høyde og bredde tilpasses innholdet). Den respekterer heller ikke vertikal margin/padding slik blokker gjør.
+
+```text
++---------+  +---------+  +---------+
+|  box 1  |  |  box 2  |  |  box 3  |
++---------+  +---------+  +---------+
+```
+
+`display: inline-block` er lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut
+
+Margin skaper avstand mellom alle disse.
+
+👉 Normal flyt – blokk
+
+Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
+
+👉 Normal flyt – inline
+
+Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
+
+Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
+
+## 🏷️ ID og Class
+
+```text
+id  >  class  >  element
+```
