@@ -1,5 +1,7 @@
 # 📝 Litt om CSS
 
+Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturloig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert
+
 
 ## 🌐 Overordnet HTML
 
@@ -67,10 +69,15 @@ Forklaring:
 - `<body>` – alt det synlige innholdet (inkl. header, footer, sidepanel ...)
 - `<main>` – hovedinnhold
 - `<section>` – logiske grupper av innhold (f.eks. kapitler, emner)
-- `<div>` – generell beholder. Brukes for layout og styling
-- `<p>` – avsnitt
-- `<pre>` – preformatert tekst, beholder linjeskift og mellomrom
+- `<div>` – generell beholder, typisk for avsnittspreget layout og styling
+- `<p>` – vanlig avsnitt
+- `<pre>` – preformatert tekst som beholder linjeskift og mellomrom
 - `<footer>` – bunntekst
+
+Andre viktige tekstlige elemeneter er:
+
+- `<code>` – for formatering av kode-aktige ord
+- `<span>` – generel beholder, typisk for mer ordbasert formatering
 
 👉 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.
 
@@ -124,10 +131,10 @@ selektor {
 }
 ```
 
-ved at
+der
 
 - **selektor** (selector) bestemmer hvilke HTML-elementer regelen gjelder for
-- **{ ... }** Regelblokk (rule block) inneholder én eller flere deklarasjoner
+- **{ ... }** regelblokk (rule block) inneholder én eller flere deklarasjoner
 - **egenskap** (property) angir hva vil endre (f.eks. margin eller display)
 - **verdi** (value)	er verdien man setter på egenskapen (f.eks. red eller 10px)
 
@@ -316,7 +323,7 @@ div {
 }
 ```
 
-## 📏 Content box vs Border box
+## 📦 Content box vs Border box
 
 Vi har to typer bokser, *content* og *border box*. For en contentbox (som er default) av en spesifikk størrelse kommer padding og border i tillegg for den endelig størrelsen av boksen. For border-box er spesifikk størrelse den faktisk størrelse. (Margin gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)
 
@@ -353,10 +360,10 @@ Det fins i tillegg to valg `flex` og `grid` som vi evt. behandler senere.
 Betydningen er som følger:
 
 - Blokk-elementer legger seg under hverandre
-- Inline-elementer legger seg ved siden av hverandre
-- Inline-block gjør det samme, men respekterer width/height
+- Inline-elementer legger seg ved siden av hverandre (uten egne width/height-settinger)
+- Inline-block legger seg ved siden av hverandre (og kan ha egne width/height-settinger)
   
-En `display: block` starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både `width`, `height`, `margin`, `padding` og `border`.
+En `display: block` starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både `width`, `height`, `margin`, `padding` og `border` som brukeren evt. setter.
 
 ```text
 BLOCK-ELEMENTER
@@ -374,7 +381,7 @@ BLOCK-ELEMENTER
 +---------------------------+
 ```
 
-`display: inline` gir inline-elementer. Den starter ikke på ny linje, de legger seg ved siden av hverandre, flyter inni tekstlinjen og ignorerer `width` og `height` (dvs. at høyde og bredde tilpasses innholdet). Den respekterer heller ikke vertikal margin/padding slik blokker gjør.
+`display: inline` gir inline-elementer. Den starter ikke på ny linje, legger seg ved siden av omgivelsene, flyter inni tekstlinjen, og høyde/bredde tilpasses innholdet. Den respekterer heller ikke vertikal margin/padding slik blokker gjør.
 
 ```text
 +---------+  +---------+  +---------+
@@ -382,9 +389,15 @@ BLOCK-ELEMENTER
 +---------+  +---------+  +---------+
 ```
 
-`display: inline-block` er lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut
+`display: inline-block` er lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut, dvs. at den kan ha høyde og bredde som skiller fra de umiddlabare omgivelsen.
 
-Margin skaper avstand mellom alle disse.
+Margin skaper avstand mellom alle disse blokk-typene.
+
+👉 Block-baserte tekstelementer: **div**, **pre** og **p** 
+
+👉 Inline-baserte tekstelementer: **code** og **span**
+
+Det er CSS-spesifikasjonen + user agent stylesheet som realiserer dette i praksis.
 
 👉 Normal flyt – blokk
 
@@ -395,6 +408,106 @@ Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde o
 Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
 
 Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
+
+## 🌳 Arv
+
+Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er vktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
+
+✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som
+
+- color
+- font-family
+- font-size
+- font-weight
+- line-height
+- text-align
+- visibility
+
+❌ Boks- og layout-egenskaper arves ikke, dvs. egenskaper som
+
+- margin
+- padding
+- border
+- width
+- height
+- display
+- position
+- background
+- box-shadow
+
+Man har imidlertid kodeordet/verdien `inherit` som ta verdien fra forelder, uansett om den normalt arves eller ikke. Slik brukes den
+
+```css
+div {
+  margin: inherit;
+}
+```
+
+I forlengelsen av alt dette er det også verdt å nevne at det ikke er definert default-verdier for egenskaper i HTML-standarden. Nettlesere (i denne sammenheng kalt *user agent stylesheet*) setter imildertid typisk flere av disse (med kun mindre forskjeller mellom ulike lesere).
+
+Når det gjelder arverekkefølge, så kan den for tekst typisk se slik ut:
+
+```text
+html
+└── body
+    └── main
+        └── div
+            └── p, pre
+                └── code, span
+```
+
+Rekkefølgen er ikke gitt direkte av HTML-standarden, men er en blanding av hvordan rekkefølgen fremkommer av selve HTML-documentet man jobber med (hva som ligger inni hva) og HTMLs såkalte *content model*. Kort fortalt har man ulike innholdstyper i HTML:
+
+- **Flow content**: det meste av vanlige elementer
+- **Phrasing content**: inline-tekstinnhold
+- **Sectioning content**: section, article, nav, aside
+- **Heading content**: h1–h6
+- **Interactive content**: button, input, href
+
+Og så har man regler som:
+
+- Flow-elementer kan inneholde flow
+- Flow-elementer kan inneholde phrasing
+- Phrasing kan bare inneholde phrasing
+
+mm. Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. *content model*:
+
+```text
+Forelder\Barn   div     p     pre   code    span
+ div             ✔      ✔      ✔      ✔      ✔
+ p              ❌     ❌     ❌      ✔      ✔
+ pre            ❌     ❌     ❌      ✔      ✔
+ code           ❌     ❌     ❌      ✔      ✔
+ span           ❌     ❌     ❌      ✔      ✔ 
+```
+
+Vi ser f.eks at **p** kan ligge inni **div**, men ikke omvendt. Videre kan **code** og **span** ligge inni en **pre**, men ikke **div**, **p** eller andre **pre** osv.
+
+Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister av ulike slag. Man har egne beholdere **ol** og **ul** som listeelementene ligger inni:
+
+```text
+UL (unordered list)   → container for punktliste
+└── LI                → hvert punkt i listen
+
+OL (ordered list)     → container for numrert liste
+└── LI                → hvert punkt i listen
+```
+
+Tabellem under  inneholde `ul`/`ol`?  Kommentar  
+
+```text
+div      ✅    div kan inneholde nesten alt
+p`       ❌    p kan bare inneholde phrasing content
+pre      ❌    pre kan bare inneholde phrasing content
+li       ❌    li er flow, men inneholder ikke andre lists direkte (ul/ol kan ligge inni li)
+ul/ol    ✅    lister kan ligge inni andre lister som sublist
+```
+
+- Du kan ikke ha **li** utenfor **ul** eller **ol**
+
+- Innholdet i **li** kan være *flow content*, dvs. du kan ha **p**, **pre**, **div** inni en **li**
+
+- **code** og **span** fungerer som før, inline/phrasing, arver fra forelder (**li**, **p**, **div** osv)
 
 ## 🏷️ ID og Class
 

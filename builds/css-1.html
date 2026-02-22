@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="description" content="Dette heftet tar for seg grunnleggende CSS">
 <meta name="author" content="Jan R Sandbakken">
 <title>Litt om CSS</title>
@@ -579,8 +579,9 @@ pre.rouge .gs {
 <li><a href="#_vw_og_vh">📐 vw og vh</a></li>
 </ul>
 </li>
-<li><a href="#_content_box_vs_border_box">📏 Content box vs Border box</a></li>
+<li><a href="#_content_box_vs_border_box">📦 Content box vs Border box</a></li>
 <li><a href="#_️_display">🖼️ Display</a></li>
+<li><a href="#_arv">🌳 Arv</a></li>
 <li><a href="#_️_id_og_class">🏷️ ID og Class</a></li>
 </ul>
 </li>
@@ -600,6 +601,9 @@ pre.rouge .gs {
 <div class="sect1">
 <h2 id="_litt_om_css"><a class="anchor" href="#_litt_om_css"></a>📝 Litt om CSS</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturloig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert</p>
+</div>
 <div class="sect2">
 <h3 id="_overordnet_html"><a class="anchor" href="#_overordnet_html"></a>🌐 Overordnet HTML</h3>
 <div class="paragraph">
@@ -682,16 +686,29 @@ Beholder mellomrom og linjeskift.
 <p><code>&lt;section&gt;</code> – logiske grupper av innhold (f.eks. kapitler, emner)</p>
 </li>
 <li>
-<p><code>&lt;div&gt;</code> – generell beholder. Brukes for layout og styling</p>
+<p><code>&lt;div&gt;</code> – generell beholder, typisk for avsnittspreget layout og styling</p>
 </li>
 <li>
-<p><code>&lt;p&gt;</code> – avsnitt</p>
+<p><code>&lt;p&gt;</code> – vanlig avsnitt</p>
 </li>
 <li>
-<p><code>&lt;pre&gt;</code> – preformatert tekst, beholder linjeskift og mellomrom</p>
+<p><code>&lt;pre&gt;</code> – preformatert tekst som beholder linjeskift og mellomrom</p>
 </li>
 <li>
 <p><code>&lt;footer&gt;</code> – bunntekst</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Andre viktige tekstlige elemeneter er:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;code&gt;</code> – for formatering av kode-aktige ord</p>
+</li>
+<li>
+<p><code>&lt;span&gt;</code> – generel beholder, typisk for mer ordbasert formatering</p>
 </li>
 </ul>
 </div>
@@ -761,7 +778,7 @@ Beholder mellomrom og linjeskift.
 <p>CSS separerer struktur (HTML) fra utseende (CSS) → lettere vedlikehold.</p>
 </li>
 <li>
-<p>En regel består alltid av selektor + deklarasjonsblokk</p>
+<p>En regel består alltid av selektor &#43; deklarasjonsblokk</p>
 </li>
 <li>
 <p>CSS arves nedover i dokumentet (f.eks. <code>color</code> fra <code>&lt;body&gt;</code> arves til <code>&lt;p&gt;</code>)</p>
@@ -780,7 +797,7 @@ Beholder mellomrom og linjeskift.
 </div>
 </div>
 <div class="paragraph">
-<p>ved at</p>
+<p>der</p>
 </div>
 <div class="ulist">
 <ul>
@@ -788,7 +805,7 @@ Beholder mellomrom og linjeskift.
 <p><strong>selektor</strong> (selector) bestemmer hvilke HTML-elementer regelen gjelder for</p>
 </li>
 <li>
-<p><strong>\{ &#8230;&#8203; }</strong> Regelblokk (rule block) inneholder én eller flere deklarasjoner</p>
+<p><strong>{ &#8230;&#8203; }</strong> regelblokk (rule block) inneholder én eller flere deklarasjoner</p>
 </li>
 <li>
 <p><strong>egenskap</strong> (property) angir hva vil endre (f.eks. margin eller display)</p>
@@ -1053,7 +1070,7 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_content_box_vs_border_box"><a class="anchor" href="#_content_box_vs_border_box"></a>📏 Content box vs Border box</h3>
+<h3 id="_content_box_vs_border_box"><a class="anchor" href="#_content_box_vs_border_box"></a>📦 Content box vs Border box</h3>
 <div class="paragraph">
 <p>Vi har to typer bokser, <em>content</em> og <em>border box</em>. For en contentbox (som er default) av en spesifikk størrelse kommer padding og border i tillegg for den endelig størrelsen av boksen. For border-box er spesifikk størrelse den faktisk størrelse. (Margin gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)</p>
 </div>
@@ -1110,15 +1127,15 @@ border-top-color:</code></pre>
 <p>Blokk-elementer legger seg under hverandre</p>
 </li>
 <li>
-<p>Inline-elementer legger seg ved siden av hverandre</p>
+<p>Inline-elementer legger seg ved siden av hverandre (uten egne width/height-settinger)</p>
 </li>
 <li>
-<p>Inline-block gjør det samme, men respekterer width/height</p>
+<p>Inline-block legger seg ved siden av hverandre (og kan ha egne width/height-settinger)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>En <code>display: block</code> starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code> og <code>border</code>.</p>
+<p>En <code>display: block</code> starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både <code>width</code>, <code>height</code>, <code>margin</code>, <code>padding</code> og <code>border</code> som brukeren evt. setter.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1138,7 +1155,7 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>display: inline</code> gir inline-elementer. Den starter ikke på ny linje, de legger seg ved siden av hverandre, flyter inni tekstlinjen og ignorerer <code>width</code> og <code>height</code> (dvs. at høyde og bredde tilpasses innholdet). Den respekterer heller ikke vertikal margin/padding slik blokker gjør.</p>
+<p><code>display: inline</code> gir inline-elementer. Den starter ikke på ny linje, legger seg ved siden av omgivelsene, flyter inni tekstlinjen, og høyde/bredde tilpasses innholdet. Den respekterer heller ikke vertikal margin/padding slik blokker gjør.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1148,10 +1165,19 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>display: inline-block</code> er lik, bare at den respekterer <code>width</code>, <code>height</code>, <code>margin</code> og <code>padding</code> fullt ut</p>
+<p><code>display: inline-block</code> er lik, bare at den respekterer <code>width</code>, <code>height</code>, <code>margin</code> og <code>padding</code> fullt ut, dvs. at den kan ha høyde og bredde som skiller fra de umiddlabare omgivelsen.</p>
 </div>
 <div class="paragraph">
-<p>Margin skaper avstand mellom alle disse.</p>
+<p>Margin skaper avstand mellom alle disse blokk-typene.</p>
+</div>
+<div class="paragraph">
+<p>👉 Block-baserte tekstelementer: <strong>div</strong>, <strong>pre</strong> og <strong>p</strong></p>
+</div>
+<div class="paragraph">
+<p>👉 Inline-baserte tekstelementer: <strong>code</strong> og <strong>span</strong></p>
+</div>
+<div class="paragraph">
+<p>Det er CSS-spesifikasjonen &#43; user agent stylesheet som realiserer dette i praksis.</p>
 </div>
 <div class="paragraph">
 <p>👉 Normal flyt – blokk</p>
@@ -1170,6 +1196,195 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_arv"><a class="anchor" href="#_arv"></a>🌳 Arv</h3>
+<div class="paragraph">
+<p>Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er vktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element.</p>
+</div>
+<div class="paragraph">
+<p>✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>color</p>
+</li>
+<li>
+<p>font-family</p>
+</li>
+<li>
+<p>font-size</p>
+</li>
+<li>
+<p>font-weight</p>
+</li>
+<li>
+<p>line-height</p>
+</li>
+<li>
+<p>text-align</p>
+</li>
+<li>
+<p>visibility</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>❌ Boks- og layout-egenskaper arves ikke, dvs. egenskaper som</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>margin</p>
+</li>
+<li>
+<p>padding</p>
+</li>
+<li>
+<p>border</p>
+</li>
+<li>
+<p>width</p>
+</li>
+<li>
+<p>height</p>
+</li>
+<li>
+<p>display</p>
+</li>
+<li>
+<p>position</p>
+</li>
+<li>
+<p>background</p>
+</li>
+<li>
+<p>box-shadow</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Man har imidlertid kodeordet/verdien <code>inherit</code> som ta verdien fra forelder, uansett om den normalt arves eller ikke. Slik brukes den</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I forlengelsen av alt dette er det også verdt å nevne at det ikke er definert default-verdier for egenskaper i HTML-standarden. Nettlesere (i denne sammenheng kalt <em>user agent stylesheet</em>) setter imildertid typisk flere av disse (med kun mindre forskjeller mellom ulike lesere).</p>
+</div>
+<div class="paragraph">
+<p>Når det gjelder arverekkefølge, så kan den for tekst typisk se slik ut:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">html
+└── body
+    └── main
+        └── div
+            └── p, pre
+                └── code, span</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rekkefølgen er ikke gitt direkte av HTML-standarden, men er en blanding av hvordan rekkefølgen fremkommer av selve HTML-documentet man jobber med (hva som ligger inni hva) og HTMLs såkalte <em>content model</em>. Kort fortalt har man ulike innholdstyper i HTML:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Flow content</strong>: det meste av vanlige elementer</p>
+</li>
+<li>
+<p><strong>Phrasing content</strong>: inline-tekstinnhold</p>
+</li>
+<li>
+<p><strong>Sectioning content</strong>: section, article, nav, aside</p>
+</li>
+<li>
+<p><strong>Heading content</strong>: h1–h6</p>
+</li>
+<li>
+<p><strong>Interactive content</strong>: button, input, href</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Og så har man regler som:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Flow-elementer kan inneholde flow</p>
+</li>
+<li>
+<p>Flow-elementer kan inneholde phrasing</p>
+</li>
+<li>
+<p>Phrasing kan bare inneholde phrasing</p>
+</li>
+</ul>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i" start="2000">
+<li>
+<p>Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. <em>content model</em>:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">Forelder\Barn   div     p     pre   code    span
+ div             ✔      ✔      ✔      ✔      ✔
+ p              ❌     ❌     ❌      ✔      ✔
+ pre            ❌     ❌     ❌      ✔      ✔
+ code           ❌     ❌     ❌      ✔      ✔
+ span           ❌     ❌     ❌      ✔      ✔</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vi ser f.eks at <strong>p</strong> kan ligge inni <strong>div</strong>, men ikke omvendt. Videre kan <strong>code</strong> og <strong>span</strong> ligge inni en <strong>pre</strong>, men ikke <strong>div</strong>, <strong>p</strong> eller andre <strong>pre</strong> osv.</p>
+</div>
+<div class="paragraph">
+<p>Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister av ulike slag. Man har egne beholdere <strong>ol</strong> og <strong>ul</strong> som listeelementene ligger inni:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">UL (unordered list)   → container for punktliste
+└── LI                → hvert punkt i listen
+
+OL (ordered list)     → container for numrert liste
+└── LI                → hvert punkt i listen</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Tabellem under inneholde <code>ul</code>/<code>ol</code>? Kommentar</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">div      ✅    div kan inneholde nesten alt
+p`       ❌    p kan bare inneholde phrasing content
+pre      ❌    pre kan bare inneholde phrasing content
+li       ❌    li er flow, men inneholder ikke andre lists direkte (ul/ol kan ligge inni li)
+ul/ol    ✅    lister kan ligge inni andre lister som sublist</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Du kan ikke ha <strong>li</strong> utenfor <strong>ul</strong> eller <strong>ol</strong></p>
+</li>
+<li>
+<p>Innholdet i <strong>li</strong> kan være <em>flow content</em>, dvs. du kan ha <strong>p</strong>, <strong>pre</strong>, <strong>div</strong> inni en <strong>li</strong></p>
+</li>
+<li>
+<p><strong>code</strong> og <strong>span</strong> fungerer som før, inline/phrasing, arver fra forelder (<strong>li</strong>, <strong>p</strong>, <strong>div</strong> osv)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_️_id_og_class"><a class="anchor" href="#_️_id_og_class"></a>🏷️ ID og Class</h3>
 <div class="listingblock">
 <div class="content">
@@ -1183,7 +1398,7 @@ border-top-color:</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0 2026-02-19<br>
-Last updated 2026-02-20 18:51:02 +0100
+Last updated 2026-02-21 20:22:52 +0100
 </div>
 </div>
 </body>
