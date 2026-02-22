@@ -1,8 +1,10 @@
 == Litt om CSS
 
-Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturloig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert
+Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert på tekstlige elementer.
 
 === Overordnet HTML
+
+Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike _mark-ups_ for fet eller kursiv skrift og den slags behandles ikke. Her fokuseres det på struktur med relevans for stiling.
 
 Et HTML-dokument kan strukturelt sett se slik ut:
 
@@ -22,7 +24,7 @@ Et HTML-dokument kan strukturelt sett se slik ut:
        └── <footer> … bunntekst, copyright, kontaktinfo …
 ----
 
-Her er et HTML-eksempel, med syntaks og viktige elementer:
+Og her er et HTML-eksempel, med syntaks og viktige elementer:
 
 [%unbreakable]
 [source,html]
@@ -68,19 +70,19 @@ Beholder mellomrom og linjeskift.
 
 Forklaring:
 
-* `++<++header++>++` – overskriftsseksjon på toppen av dokumentet
-* `++<++body++>++` – alt det synlige innholdet (inkl. header, footer, sidepanel ...)
-* `++<++main++>++` – hovedinnhold
-* `++<++section++>++` – logiske grupper av innhold (f.eks. kapitler, emner)
-* `++<++div++>++` – generell beholder, typisk for avsnittspreget layout og styling
-* `++<++p++>++` – vanlig avsnitt
-* `++<++pre++>++` – preformatert tekst som beholder linjeskift og mellomrom
-* `++<++footer++>++` – bunntekst
+* `<header>` er overskriftsseksjon på toppen av dokumentet
+* `<body>` er alt det synlige innholdet (inkl. header, footer, sidepanel, ...)
+* `<main>` er hovedinnhold
+* `<section>` er logiske grupper av innhold (f.eks. kapitler, emner)
+* `<div>` er en generell beholder, typisk for avsnittspreget layout og styling
+* `<p>` er vanlig avsnitt
+* `<pre>` er preformatert tekst som beholder linjeskift og mellomrom
+* `<footer>` er bunntekst
 
-Andre viktige tekstlige elemeneter er:
+Andre viktige tekstlige elementer er:
 
-* `++<++code++>++` – for formatering av kode-aktige ord
-* `++<++span++>++` – generel beholder, typisk for mer ordbasert formatering
+* `<code>` – for formatering av kodeaktige ord
+* `<span>` – generell beholder, typisk for mer ordbasert formatering
 
 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.
 
@@ -90,9 +92,9 @@ CSS står for _Cascading Style Sheets_, som representerer:
 
 * Cascading → Regler “kaskaderer”, dvs. nye regler kan overstyre gamle basert på spesifisitet og rekkefølge.
 * Style → Angir hvordan elementer ser ut: farge, størrelse, plassering, marg, osv.
-* Sheets → Samles i en fil (ofte style.css) og kobles til HTML.
+* Sheets → Samles i en fil (f.eks. *style.css*) og kobles til HTML.
 
-Hvordan CSS henger sammen med HTML
+Hvordan CSS henger sammen med HTML:
 
 [arabic]
 . Selektor – hva du vil style (f.eks. *p*, *.boks*, *#header*)
@@ -121,8 +123,8 @@ p {
 Hovedprinsippene er at:
 
 * CSS separerer struktur (HTML) fra utseende (CSS) → lettere vedlikehold.
-* En regel består alltid av selektor {plus} deklarasjonsblokk
-* CSS arves nedover i dokumentet (f.eks. `color` fra `++<++body++>++` arves til `++<++p++>++`)
+* En regel består alltid av selektor + deklarasjonsblokk
+* CSS arves nedover i dokumentet (f.eks. `color` fra `<body>` arves til `<p>`)
 
 Konstruksjonen som bestemmer verdier, ser generelt slik ut:
 
@@ -138,11 +140,11 @@ selektor {
 der
 
 * *selektor* (selector) bestemmer hvilke HTML-elementer regelen gjelder for
-* *++{++ ... }* regelblokk (rule block) inneholder én eller flere deklarasjoner
+* *\{ ... }* regelblokk (rule block) inneholder én eller flere deklarasjoner
 * *egenskap* (property) angir hva vil endre (f.eks. margin eller display)
 * *verdi* (value) er verdien man setter på egenskapen (f.eks. red eller 10px)
 
-Når det gjelder arv, er det slik at noen egenskaper arves (som `color`) og andre ikke (som `padding`), og i tillegg er det et arvehierarki som gjelder I HTML/CSS (som f.eks `++<++body++>++` → `++<++div++>++` → `++<++p++>++`). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på
+Når det gjelder arv, er det slik at noen egenskaper arves (som `color`) og andre ikke (som `padding`), og i tillegg er det et arvehierarki som gjelder I HTML/CSS (som f.eks `<body>` → `<div>` → `<p>`). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på
 
 * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference[MDN CSS Reference]
 * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference[CSS Specification (W3C)]
@@ -430,7 +432,7 @@ Block-baserte tekstelementer: *div*, *pre* og *p*
 
 Inline-baserte tekstelementer: *code* og *span*
 
-Det er CSS-spesifikasjonen {plus} user agent stylesheet som realiserer dette i praksis.
+Det er CSS-spesifikasjonen + user agent stylesheet som realiserer dette i praksis.
 
 Normal flyt – blokk
 
@@ -442,11 +444,11 @@ Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nød
 
 Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
 
-=== 🌳 Arv
+=== Arv
 
-Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er vktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element.
+Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er viktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element.
 
-✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som
+Tekst-relaterte egenskaper arves, dvs, egenskaper som
 
 * color
 * font-family
@@ -456,7 +458,7 @@ Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen beste
 * text-align
 * visibility
 
-❌ Boks- og layout-egenskaper arves ikke, dvs. egenskaper som
+ - Boks- og layout-egenskaper arves ikke, dvs. egenskaper som
 
 * margin
 * padding
@@ -507,23 +509,22 @@ Og så har man regler som:
 * Flow-elementer kan inneholde phrasing
 * Phrasing kan bare inneholde phrasing
 
-[lowerroman, start=2000]
-. Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. _content model_:
+Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. _content model_:
 
 [%unbreakable]
 [source,text]
 ----
 Forelder\Barn   div     p     pre   code    span
- div             ✔      ✔      ✔      ✔      ✔
- p              ❌     ❌     ❌      ✔      ✔
- pre            ❌     ❌     ❌      ✔      ✔
- code           ❌     ❌     ❌      ✔      ✔
- span           ❌     ❌     ❌      ✔      ✔ 
+ div             Y      Y      Y      Y      Y
+ p               -      -      -      Y      Y
+ pre             -      -      -      Y      Y
+ code            -      -      -      Y      Y
+ span            -      -      -      Y      Y 
 ----
 
 Vi ser f.eks at *p* kan ligge inni *div*, men ikke omvendt. Videre kan *code* og *span* ligge inni en *pre*, men ikke *div*, *p* eller andre *pre* osv.
 
-Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister av ulike slag. Man har egne beholdere *ol* og *ul* som listeelementene ligger inni:
+Det fins flere tekstlige elementer enn dette, som unummererte og nummererte lister av ulike slag. Vi tar ikke detaljene her, men kort fortalt fins egne beholdere *ol* og *ul* som listeelementeneligger inni:
 
 [%unbreakable]
 [source,text]
@@ -531,30 +532,122 @@ Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister a
 UL (unordered list)   → container for punktliste
 └── LI                → hvert punkt i listen
 
-OL (ordered list)     → container for numrert liste
+OL (ordered list)     → container for nummerert liste
 └── LI                → hvert punkt i listen
 ----
 
-Tabellem under inneholde `ul`/`ol`? Kommentar
+Beholderne kan ligge inni *div*, men ikke i *p* eller *pre*. (På den annen side kan *div*, *p*, *pre*, *code*, *span* disse ligge inne *li*, om ønskelig.)
+
+=== ID og Class
+
+Man kan formatere f.eks. en *div* med:
 
 [%unbreakable]
-[source,text]
+[source,css]
 ----
-div      ✅    div kan inneholde nesten alt
-p`       ❌    p kan bare inneholde phrasing content
-pre      ❌    pre kan bare inneholde phrasing content
-li       ❌    li er flow, men inneholder ikke andre lists direkte (ul/ol kan ligge inni li)
-ul/ol    ✅    lister kan ligge inni andre lister som sublist
+div {
+    color: darkblue;
+}
 ----
 
-* Du kan ikke ha *li* utenfor *ul* eller *ol*
-* Innholdet i *li* kan være _flow content_, dvs. du kan ha *p*, *pre*, *div* inni en *li*
-* *code* og *span* fungerer som før, inline/phrasing, arver fra forelder (*li*, *p*, *div* osv)
+Problemet er da at _alle_ *div* endres iht. dette, om man ønsker det eller ikke. Man kan derfor innføre sin egen *div*, f.eks. *info* ved CLASS-konstruksjonen i HTML
 
-=== 1. ID og Class
+[%unbreakable]
+[source,html]
+----
+<div class="info">
+    God jul!
+</div>
+----
+
+og stile disse forekomstene (uten å påvirke global *div*) ved konstruksjoner som
+
+[%unbreakable]
+[source,css]
+----
+.info {
+    color: darkblue;
+}
+----
+
+Dette er en nyttig utnyttelse av klasser. Men man kan også bruke denne info-stilen vår på andre elementer, f.eks. *p*:
+
+[%unbreakable]
+[source,html]
+----
+<p class="info">
+    God påske!
+</div>
+----
+
+slik at man også kan gruppere et sett av egenskaper med verdier, og anvende dem på flere elementer, f eks. for en enhetlig stil eller oppførsel.
 
 [%unbreakable]
 [source,text]
 ----
 id  >  class  >  element
 ----
+
+*ID* er en beslektet
+
+=== Kombinerte selektorer
+
+Kombinerte selektorer er
+
+Oversikt over de viktigste kombinasjonene:
+
+[%unbreakable]
+[source,text]
+----
+Selektor    Betydning
+A B         B er etterkommer av A
+A > B       B er direkte barn av A
+A + B       B kommer rett etter A
+A ~ B       B er senere søsken av A
+----
+
+Det følgende forsøker å stile forekomster av *code* under forutsetning at de ligger inni en *p*:
+
+[%unbreakable]
+[source,css]
+----
+pre code {
+  background: lightgray;
+}
+----
+
+*code* må ligge inni pre, men ikke nødvendigvis rett etter, så det matcher f.eks:
+
+[%unbreakable]
+[source,html]
+----
+<pre>
+  <div>
+    Dette er <code>Python</code> for nybegynnere.
+  </div>
+</pre>
+----
+
+Bruker man denne
+
+[%unbreakable]
+[source,css]
+----
+pre > code {
+  color: red;
+}
+----
+
+forlanger man at *code* er direkte barn av *pre*, slik at det bare matcher
+
+[%unbreakable]
+[source,html]
+----
+<pre>
+  <code>...</code>
+</pre>
+----
+
+osv.
+
+*pre code* har høyere spesifisitet enn bare *code*, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="description" content="Dette heftet tar for seg grunnleggende CSS">
 <meta name="author" content="Jan R Sandbakken">
 <title>Litt om CSS</title>
@@ -581,8 +581,9 @@ pre.rouge .gs {
 </li>
 <li><a href="#_content_box_vs_border_box">Content box vs Border box</a></li>
 <li><a href="#_display">Display</a></li>
-<li><a href="#_arv">🌳 Arv</a></li>
-<li><a href="#_1_id_og_class">1. ID og Class</a></li>
+<li><a href="#_arv">Arv</a></li>
+<li><a href="#_id_og_class">ID og Class</a></li>
+<li><a href="#_kombinerte_selektorer">Kombinerte selektorer</a></li>
 </ul>
 </li>
 </ul>
@@ -602,10 +603,13 @@ pre.rouge .gs {
 <h2 id="_litt_om_css"><a class="anchor" href="#_litt_om_css"></a>Litt om CSS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturloig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert</p>
+<p>Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert på tekstlige elementer.</p>
 </div>
 <div class="sect2">
 <h3 id="_overordnet_html"><a class="anchor" href="#_overordnet_html"></a>Overordnet HTML</h3>
+<div class="paragraph">
+<p>Helt grunnleggende HTML antas kjent. Bruk av overskrifter som <code>&lt;h1&gt;</code>, linker, ulike <em>mark-ups</em> for fet eller kursiv skrift og den slags behandles ikke. Her fokuseres det på struktur med relevans for stiling.</p>
+</div>
 <div class="paragraph">
 <p>Et HTML-dokument kan strukturelt sett se slik ut:</p>
 </div>
@@ -625,7 +629,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
-<p>Her er et HTML-eksempel, med syntaks og viktige elementer:</p>
+<p>Og her er et HTML-eksempel, med syntaks og viktige elementer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -674,41 +678,41 @@ Beholder mellomrom og linjeskift.
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;header&gt;</code> – overskriftsseksjon på toppen av dokumentet</p>
+<p><code>&lt;header&gt;</code> er overskriftsseksjon på toppen av dokumentet</p>
 </li>
 <li>
-<p><code>&lt;body&gt;</code> – alt det synlige innholdet (inkl. header, footer, sidepanel &#8230;&#8203;)</p>
+<p><code>&lt;body&gt;</code> er alt det synlige innholdet (inkl. header, footer, sidepanel, &#8230;&#8203;)</p>
 </li>
 <li>
-<p><code>&lt;main&gt;</code> – hovedinnhold</p>
+<p><code>&lt;main&gt;</code> er hovedinnhold</p>
 </li>
 <li>
-<p><code>&lt;section&gt;</code> – logiske grupper av innhold (f.eks. kapitler, emner)</p>
+<p><code>&lt;section&gt;</code> er logiske grupper av innhold (f.eks. kapitler, emner)</p>
 </li>
 <li>
-<p><code>&lt;div&gt;</code> – generell beholder, typisk for avsnittspreget layout og styling</p>
+<p><code>&lt;div&gt;</code> er en generell beholder, typisk for avsnittspreget layout og styling</p>
 </li>
 <li>
-<p><code>&lt;p&gt;</code> – vanlig avsnitt</p>
+<p><code>&lt;p&gt;</code> er vanlig avsnitt</p>
 </li>
 <li>
-<p><code>&lt;pre&gt;</code> – preformatert tekst som beholder linjeskift og mellomrom</p>
+<p><code>&lt;pre&gt;</code> er preformatert tekst som beholder linjeskift og mellomrom</p>
 </li>
 <li>
-<p><code>&lt;footer&gt;</code> – bunntekst</p>
+<p><code>&lt;footer&gt;</code> er bunntekst</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Andre viktige tekstlige elemeneter er:</p>
+<p>Andre viktige tekstlige elementer er:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;code&gt;</code> – for formatering av kode-aktige ord</p>
+<p><code>&lt;code&gt;</code> – for formatering av kodeaktige ord</p>
 </li>
 <li>
-<p><code>&lt;span&gt;</code> – generel beholder, typisk for mer ordbasert formatering</p>
+<p><code>&lt;span&gt;</code> – generell beholder, typisk for mer ordbasert formatering</p>
 </li>
 </ul>
 </div>
@@ -730,12 +734,12 @@ Beholder mellomrom og linjeskift.
 <p>Style → Angir hvordan elementer ser ut: farge, størrelse, plassering, marg, osv.</p>
 </li>
 <li>
-<p>Sheets → Samles i en fil (ofte style.css) og kobles til HTML.</p>
+<p>Sheets → Samles i en fil (f.eks. <strong>style.css</strong>) og kobles til HTML.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Hvordan CSS henger sammen med HTML</p>
+<p>Hvordan CSS henger sammen med HTML:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -778,7 +782,7 @@ Beholder mellomrom og linjeskift.
 <p>CSS separerer struktur (HTML) fra utseende (CSS) → lettere vedlikehold.</p>
 </li>
 <li>
-<p>En regel består alltid av selektor &#43; deklarasjonsblokk</p>
+<p>En regel består alltid av selektor + deklarasjonsblokk</p>
 </li>
 <li>
 <p>CSS arves nedover i dokumentet (f.eks. <code>color</code> fra <code>&lt;body&gt;</code> arves til <code>&lt;p&gt;</code>)</p>
@@ -805,7 +809,7 @@ Beholder mellomrom og linjeskift.
 <p><strong>selektor</strong> (selector) bestemmer hvilke HTML-elementer regelen gjelder for</p>
 </li>
 <li>
-<p><strong>{ &#8230;&#8203; }</strong> regelblokk (rule block) inneholder én eller flere deklarasjoner</p>
+<p><strong>\{ &#8230;&#8203; }</strong> regelblokk (rule block) inneholder én eller flere deklarasjoner</p>
 </li>
 <li>
 <p><strong>egenskap</strong> (property) angir hva vil endre (f.eks. margin eller display)</p>
@@ -1177,7 +1181,7 @@ border-top-color:</code></pre>
 <p>Inline-baserte tekstelementer: <strong>code</strong> og <strong>span</strong></p>
 </div>
 <div class="paragraph">
-<p>Det er CSS-spesifikasjonen &#43; user agent stylesheet som realiserer dette i praksis.</p>
+<p>Det er CSS-spesifikasjonen + user agent stylesheet som realiserer dette i praksis.</p>
 </div>
 <div class="paragraph">
 <p>Normal flyt – blokk</p>
@@ -1196,12 +1200,12 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_arv"><a class="anchor" href="#_arv"></a>🌳 Arv</h3>
+<h3 id="_arv"><a class="anchor" href="#_arv"></a>Arv</h3>
 <div class="paragraph">
-<p>Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er vktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element.</p>
+<p>Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er viktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element.</p>
 </div>
 <div class="paragraph">
-<p>✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som</p>
+<p>Tekst-relaterte egenskaper arves, dvs, egenskaper som</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1225,14 +1229,14 @@ border-top-color:</code></pre>
 </li>
 <li>
 <p>visibility</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Boks- og layout-egenskaper arves ikke, dvs. egenskaper som</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>❌ Boks- og layout-egenskaper arves ikke, dvs. egenskaper som</p>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>margin</p>
 </li>
@@ -1326,70 +1330,156 @@ border-top-color:</code></pre>
 </li>
 </ul>
 </div>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i" start="2000">
-<li>
+<div class="paragraph">
 <p>Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. <em>content model</em>:</p>
-</li>
-</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">Forelder\Barn   div     p     pre   code    span
- div             ✔      ✔      ✔      ✔      ✔
- p              ❌     ❌     ❌      ✔      ✔
- pre            ❌     ❌     ❌      ✔      ✔
- code           ❌     ❌     ❌      ✔      ✔
- span           ❌     ❌     ❌      ✔      ✔</code></pre>
+ div             Y      Y      Y      Y      Y
+ p               -      -      -      Y      Y
+ pre             -      -      -      Y      Y
+ code            -      -      -      Y      Y
+ span            -      -      -      Y      Y</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Vi ser f.eks at <strong>p</strong> kan ligge inni <strong>div</strong>, men ikke omvendt. Videre kan <strong>code</strong> og <strong>span</strong> ligge inni en <strong>pre</strong>, men ikke <strong>div</strong>, <strong>p</strong> eller andre <strong>pre</strong> osv.</p>
 </div>
 <div class="paragraph">
-<p>Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister av ulike slag. Man har egne beholdere <strong>ol</strong> og <strong>ul</strong> som listeelementene ligger inni:</p>
+<p>Det fins flere tekstlige elementer enn dette, som unummererte og nummererte lister av ulike slag. Vi tar ikke detaljene her, men kort fortalt fins egne beholdere <strong>ol</strong> og <strong>ul</strong> som listeelementeneligger inni:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">UL (unordered list)   → container for punktliste
 └── LI                → hvert punkt i listen
 
-OL (ordered list)     → container for numrert liste
+OL (ordered list)     → container for nummerert liste
 └── LI                → hvert punkt i listen</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Tabellem under inneholde <code>ul</code>/<code>ol</code>? Kommentar</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="text">div      ✅    div kan inneholde nesten alt
-p`       ❌    p kan bare inneholde phrasing content
-pre      ❌    pre kan bare inneholde phrasing content
-li       ❌    li er flow, men inneholder ikke andre lists direkte (ul/ol kan ligge inni li)
-ul/ol    ✅    lister kan ligge inni andre lister som sublist</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Du kan ikke ha <strong>li</strong> utenfor <strong>ul</strong> eller <strong>ol</strong></p>
-</li>
-<li>
-<p>Innholdet i <strong>li</strong> kan være <em>flow content</em>, dvs. du kan ha <strong>p</strong>, <strong>pre</strong>, <strong>div</strong> inni en <strong>li</strong></p>
-</li>
-<li>
-<p><strong>code</strong> og <strong>span</strong> fungerer som før, inline/phrasing, arver fra forelder (<strong>li</strong>, <strong>p</strong>, <strong>div</strong> osv)</p>
-</li>
-</ul>
+<p>Beholderne kan ligge inni <strong>div</strong>, men ikke i <strong>p</strong> eller <strong>pre</strong>. (På den annen side kan <strong>div</strong>, <strong>p</strong>, <strong>pre</strong>, <strong>code</strong>, <strong>span</strong> disse ligge inne <strong>li</strong>, om ønskelig.)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_id_og_class"><a class="anchor" href="#_1_id_og_class"></a>1. ID og Class</h3>
+<h3 id="_id_og_class"><a class="anchor" href="#_id_og_class"></a>ID og Class</h3>
+<div class="paragraph">
+<p>Man kan formatere f.eks. en <strong>div</strong> med:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">darkblue</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Problemet er da at <em>alle</em> <strong>div</strong> endres iht. dette, om man ønsker det eller ikke. Man kan derfor innføre sin egen <strong>div</strong>, f.eks. <strong>info</strong> ved CLASS-konstruksjonen i HTML</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"info"</span><span class="nt">&gt;</span>
+    God jul!
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>og stile disse forekomstene (uten å påvirke global <strong>div</strong>) ved konstruksjoner som</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nc">.info</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nx">darkblue</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dette er en nyttig utnyttelse av klasser. Men man kan også bruke denne info-stilen vår på andre elementer, f.eks. <strong>p</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"info"</span><span class="nt">&gt;</span>
+    God påske!
+<span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>slik at man også kan gruppere et sett av egenskaper med verdier, og anvende dem på flere elementer, f eks. for en enhetlig stil eller oppførsel.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="text">id  &gt;  class  &gt;  element</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><strong>ID</strong> er en beslektet</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kombinerte_selektorer"><a class="anchor" href="#_kombinerte_selektorer"></a>Kombinerte selektorer</h3>
+<div class="paragraph">
+<p>Kombinerte selektorer er</p>
+</div>
+<div class="paragraph">
+<p>Oversikt over de viktigste kombinasjonene:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text">Selektor    Betydning
+A B         B er etterkommer av A
+A &gt; B       B er direkte barn av A
+A + B       B kommer rett etter A
+A ~ B       B er senere søsken av A</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det følgende forsøker å stile forekomster av <strong>code</strong> under forutsetning at de ligger inni en <strong>p</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">pre</span> <span class="nt">code</span> <span class="p">{</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">lightgray</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>code</strong> må ligge inni pre, men ikke nødvendigvis rett etter, så det matcher f.eks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;pre&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    Dette er <span class="nt">&lt;code&gt;</span>Python<span class="nt">&lt;/code&gt;</span> for nybegynnere.
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/pre&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Bruker man denne</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">pre</span> <span class="o">&gt;</span> <span class="nt">code</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">red</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>forlanger man at <strong>code</strong> er direkte barn av <strong>pre</strong>, slik at det bare matcher</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;pre&gt;</span>
+  <span class="nt">&lt;code&gt;</span>...<span class="nt">&lt;/code&gt;</span>
+<span class="nt">&lt;/pre&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>osv.</p>
+</div>
+<div class="paragraph">
+<p><strong>pre code</strong> har høyere spesifisitet enn bare <strong>code</strong>, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.</p>
 </div>
 </div>
 </div>
@@ -1398,7 +1488,7 @@ ul/ol    ✅    lister kan ligge inni andre lister som sublist</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0 2026-02-19<br>
-Last updated 2026-02-21 20:22:52 +0100
+Last updated 2026-02-20 18:51:09 +0100
 </div>
 </div>
 </body>

@@ -1,9 +1,11 @@
 # 📝 Litt om CSS
 
-Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturloig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert
+Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert på tekstlige elementer.
 
 
 ## 🌐 Overordnet HTML
+
+Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike *mark-ups* for fet eller kursiv skrift og den slags behandles ikke. Her fokuseres det på struktur med relevans for stiling.
 
 Et HTML-dokument kan strukturelt sett se slik ut:
 
@@ -21,7 +23,7 @@ Et HTML-dokument kan strukturelt sett se slik ut:
        └── <footer> … bunntekst, copyright, kontaktinfo …
 ```
 
-Her er et HTML-eksempel, med syntaks og viktige elementer:
+Og her er et HTML-eksempel, med syntaks og viktige elementer:
 
 ```html
 <!DOCTYPE html>
@@ -65,19 +67,19 @@ Beholder mellomrom og linjeskift.
 
 Forklaring:
 
-- `<header>` – overskriftsseksjon på toppen av dokumentet
-- `<body>` – alt det synlige innholdet (inkl. header, footer, sidepanel ...)
-- `<main>` – hovedinnhold
-- `<section>` – logiske grupper av innhold (f.eks. kapitler, emner)
-- `<div>` – generell beholder, typisk for avsnittspreget layout og styling
-- `<p>` – vanlig avsnitt
-- `<pre>` – preformatert tekst som beholder linjeskift og mellomrom
-- `<footer>` – bunntekst
+- `<header>` er overskriftsseksjon på toppen av dokumentet
+- `<body>` er alt det synlige innholdet (inkl. header, footer, sidepanel, ...)
+- `<main>` er hovedinnhold
+- `<section>` er logiske grupper av innhold (f.eks. kapitler, emner)
+- `<div>` er en generell beholder, typisk for avsnittspreget layout og styling
+- `<p>` er vanlig avsnitt
+- `<pre>` er preformatert tekst som beholder linjeskift og mellomrom
+- `<footer>` er bunntekst
 
-Andre viktige tekstlige elemeneter er:
+Andre viktige tekstlige elementer er:
 
-- `<code>` – for formatering av kode-aktige ord
-- `<span>` – generel beholder, typisk for mer ordbasert formatering
+- `<code>` – for formatering av kodeaktige ord
+- `<span>` – generell beholder, typisk for mer ordbasert formatering
 
 👉 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.
 
@@ -86,12 +88,10 @@ Andre viktige tekstlige elemeneter er:
 CSS står for *Cascading Style Sheets*, som representerer:
 
 - Cascading → Regler “kaskaderer”, dvs. nye regler kan overstyre gamle basert på spesifisitet og rekkefølge.
-
 - Style → Angir hvordan elementer ser ut: farge, størrelse, plassering, marg, osv.
+- Sheets → Samles i en fil (f.eks. **style.css**) og kobles til HTML.
 
-- Sheets → Samles i en fil (ofte style.css) og kobles til HTML.
-
-Hvordan CSS henger sammen med HTML
+👉 Hvordan CSS henger sammen med HTML:
 
 1. Selektor – hva du vil style (f.eks. **p**, **.boks**, **#header**)
 2. Egenskap – hva du vil endre (f.eks. **color**, **font-size**, **margin**)
@@ -411,7 +411,7 @@ Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir altern
 
 ## 🌳 Arv
 
-Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er vktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
+Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er viktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
 
 ✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som
 
@@ -470,7 +470,7 @@ Og så har man regler som:
 - Flow-elementer kan inneholde phrasing
 - Phrasing kan bare inneholde phrasing
 
-mm. Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. *content model*:
+Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. *content model*:
 
 ```text
 Forelder\Barn   div     p     pre   code    span
@@ -483,34 +483,106 @@ Forelder\Barn   div     p     pre   code    span
 
 Vi ser f.eks at **p** kan ligge inni **div**, men ikke omvendt. Videre kan **code** og **span** ligge inni en **pre**, men ikke **div**, **p** eller andre **pre** osv.
 
-Det fins flere tekstlige elementer enn dette, som unumrerte og numrerte lister av ulike slag. Man har egne beholdere **ol** og **ul** som listeelementene ligger inni:
+Det fins flere tekstlige elementer enn dette, som unummererte og nummererte lister av ulike slag. Vi tar ikke detaljene her, men kort fortalt fins egne beholdere **ol** og **ul** som listeelementeneligger inni:
 
 ```text
 UL (unordered list)   → container for punktliste
 └── LI                → hvert punkt i listen
 
-OL (ordered list)     → container for numrert liste
+OL (ordered list)     → container for nummerert liste
 └── LI                → hvert punkt i listen
 ```
 
-Tabellem under  inneholde `ul`/`ol`?  Kommentar  
-
-```text
-div      ✅    div kan inneholde nesten alt
-p`       ❌    p kan bare inneholde phrasing content
-pre      ❌    pre kan bare inneholde phrasing content
-li       ❌    li er flow, men inneholder ikke andre lists direkte (ul/ol kan ligge inni li)
-ul/ol    ✅    lister kan ligge inni andre lister som sublist
-```
-
-- Du kan ikke ha **li** utenfor **ul** eller **ol**
-
-- Innholdet i **li** kan være *flow content*, dvs. du kan ha **p**, **pre**, **div** inni en **li**
-
-- **code** og **span** fungerer som før, inline/phrasing, arver fra forelder (**li**, **p**, **div** osv)
+Beholderne kan ligge inni **div**, men ikke i **p** eller **pre**. (På den annen side kan **div**, **p**, **pre**, **code**, **span** disse ligge inne **li**, om ønskelig.)
 
 ## 🏷️ ID og Class
+
+Man kan formatere f.eks. en **div** med:
+
+```css
+div {
+    color: darkblue;
+}
+```
+
+Problemet er da at *alle* **div** endres iht. dette, om man ønsker det eller ikke. Man kan derfor innføre sin egen **div**, f.eks. **info** ved CLASS-konstruksjonen i HTML
+
+```html
+<div class="info">
+    God jul!
+</div>
+```
+
+og stile disse forekomstene (uten å påvirke global **div**) ved konstruksjoner som
+
+```css
+.info {
+    color: darkblue;
+}
+```
+
+Dette er en nyttig utnyttelse av klasser. Men man kan også bruke denne info-stilen vår på andre elementer, f.eks. **p**:
+
+```html
+<p class="info">
+    God påske!
+</div>
+```
+slik at man også kan gruppere et sett av egenskaper med verdier, og anvende dem på flere elementer, f eks. for en enhetlig stil eller oppførsel.
 
 ```text
 id  >  class  >  element
 ```
+
+**ID** er en beslektet
+
+## 🔗 Kombinerte selektorer
+
+Kombinerte selektorer er
+
+Oversikt over de viktigste kombinasjonene:
+
+```text
+Selektor	Betydning
+A B         B er etterkommer av A
+A > B       B er direkte barn av A
+A + B       B kommer rett etter A
+A ~ B       B er senere søsken av A
+```
+
+Det følgende forsøker å stile forekomster av **code** under forutsetning at de ligger inni en **p**:
+
+```css
+pre code {
+  background: lightgray;
+}
+```
+
+**code** må ligge inni pre, men ikke nødvendigvis rett etter, så det matcher f.eks:
+
+```html
+<pre>
+  <div>
+    Dette er <code>Python</code> for nybegynnere.
+  </div>
+</pre>
+```
+
+Bruker man denne
+
+```css
+pre > code {
+  color: red;
+}
+```
+
+forlanger man at **code** er direkte barn av **pre**, slik at det bare matcher
+
+```html
+<pre>
+  <code>...</code>
+</pre>
+```
+osv.
+
+**pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
