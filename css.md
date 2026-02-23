@@ -1,11 +1,11 @@
 # 📝 Litt om CSS
 
-Hva skal se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Her vil det bli fokusert på tekstlige elementer.
+Her skal vi se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Det vil bli fokusert mest på tekstlige elementer.
 
 
 ## 🌐 Overordnet HTML
 
-Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike *mark-ups* for fet eller kursiv skrift og den slags behandles ikke. Her fokuseres det på struktur med relevans for stiling.
+Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike *mark-ups* for fet eller kursiv skrift og den slags, behandles ikke. Her fokuseres det på struktur med relevans for stiling.
 
 Et HTML-dokument kan strukturelt sett se slik ut:
 
@@ -23,7 +23,7 @@ Et HTML-dokument kan strukturelt sett se slik ut:
        └── <footer> … bunntekst, copyright, kontaktinfo …
 ```
 
-Og her er et HTML-eksempel, med syntaks og viktige elementer:
+Videre ser vi et HTML-eksempel, med syntaks og viktige elementer:
 
 ```html
 <!DOCTYPE html>
@@ -65,23 +65,27 @@ Beholder mellomrom og linjeskift.
 </html>
 ```
 
-Forklaring:
+hvor referansen til CSS-filen som styler dokumentet, er gitt ved
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+Elementene som benyttes er
 
 - `<header>` er overskriftsseksjon på toppen av dokumentet
 - `<body>` er alt det synlige innholdet (inkl. header, footer, sidepanel, ...)
 - `<main>` er hovedinnhold
-- `<section>` er logiske grupper av innhold (f.eks. kapitler, emner)
+- `<section>` er logiske grupper av innhold (f.eks. kapitler og emner)
 - `<div>` er en generell beholder, typisk for avsnittspreget layout og styling
 - `<p>` er vanlig avsnitt
 - `<pre>` er preformatert tekst som beholder linjeskift og mellomrom
 - `<footer>` er bunntekst
 
-Andre viktige tekstlige elementer er:
+Andre viktige tekstlige elementer er bl.a:
 
 - `<code>` – for formatering av kodeaktige ord
-- `<span>` – generell beholder, typisk for mer ordbasert formatering
-
-👉 CSS kan ikke kompensere for dårlig strukturert HTML. God HTML først, så CSS.
+- `<span>` – generell beholder for mer ordbasert formatering
 
 ## 🎨 Hva er CSS?
 
@@ -91,7 +95,7 @@ CSS står for *Cascading Style Sheets*, som representerer:
 - Style → Angir hvordan elementer ser ut: farge, størrelse, plassering, marg, osv.
 - Sheets → Samles i en fil (f.eks. **style.css**) og kobles til HTML.
 
-👉 Hvordan CSS henger sammen med HTML:
+CSS kobles til HTML via:
 
 1. Selektor – hva du vil style (f.eks. **p**, **.boks**, **#header**)
 2. Egenskap – hva du vil endre (f.eks. **color**, **font-size**, **margin**)
@@ -100,7 +104,7 @@ CSS står for *Cascading Style Sheets*, som representerer:
 Eksempel:
 
 ```css
-/* Stiler alle avsnitt */
+/* Stiler alle <p>-avsnitt */
 p {
     color: darkblue;
     line-height: 1.5;
@@ -155,14 +159,14 @@ html {
 body {
     font-family: system-ui, sans-serif; /* lettlest standardfont */
     line-height: 1.6;                   /* behagelig linjeavstand */
-    color: #222;                      /* tekstfarge */
-    background-color: #f5f5f5;        /* bakgrunnsfarge */
+    color: #222;                        /* tekstfarge */
+    background-color: #f5f5f5;          /* bakgrunnsfarge */
 }
 ```
 
 I HTML settes ting som bør være globalt, men sjelden knyttes til visuelt design. HTML-settinger er typisk språk og metadata, globale layout-verdier, scroll-behavior etc.
 
-BODY representerer det synlig innholdet, laget som faktisk tegnes i vinduet. Her er det typisk å sette bakgrunnsfarge, font-family, fontfarge, marger og padding, layout-begrensning som max-width mm. BODY representerer hele sider, inklusive sidepanel, *footer* og *header* mm, og dette styrer hva som er naturlig å sette her og f.eks. ikke i MAIN (som representerer hovedinnholdet, og som *kan* ha egen bakgrunnsfarge, marger etc. uten å påvirke topp og bunn og sidepanel fra BODY, hvis ønskelig). Følgende figur illustrerer situasjonen:
+BODY representerer det synlig innholdet, laget som faktisk tegnes i vinduet. Her er det typisk å sette bakgrunnsfarge, font-family, fontfarge, marger og padding, layout-begrensning som max-width mm. BODY representerer hele sider, inklusive sidepanel, *footer* og *header* mm, og dette indikerer hva som er naturlig å sette her og ikke f.eks.  i MAIN (som representerer hovedinnholdet, og som *kan* ha egen bakgrunnsfarge, marger etc. uten å påvirke topp og bunn og sidepanel fra BODY, hvis ønskelig). Følgende figur illustrerer situasjonen:
 
 ```text
 +------------------------------------------------------+
@@ -189,7 +193,7 @@ BODY representerer det synlig innholdet, laget som faktisk tegnes i vinduet. Her
 
 ## 📦 Boksmodellen
 
-De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **span**, **section**, **article**, **image** m.fl. Dvs de kan ha marger, rammer og ulike former for luft rundt seg. Dette er konkret vist i figuren under.
+De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **span**, **section**, **article**, **image** m.fl. Dvs. de kan ha marger, rammer og ulike former for luft rundt seg. Dette er konkret vist i figuren under.
 
 ```text
 +-----------------------------------------------------------+
@@ -213,13 +217,45 @@ De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **s
 +-----------------------------------------------------------+
 ```
 
+Vi ser at størrelsen av innholdet kan spesifiseres ved **width** og **height**, og man kan angi luft (**padding**) og ramme rundt (**border**) dette. Rundt dette igjen, rundt selve boksen, kan man så også legge inn luft i form av **margin**.
+
+## 📦 Content box vs Border box
+
+Vi har to typer bokser, *content* og *border box*. For en contentbox (som er default) kommer **padding** og **border** i tillegg i bestemmelse av den endelig størrelsen. For border-box er spesifikk størrelse også den faktisk størrelsen. (Men husk at **margin** gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)
+
+Slik settes de:
+
+```css
+/* content-box: standard */
+div.content-box {
+  box-sizing: content-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+}
+
+/* border-box: praktisk for layout */
+div.border-box {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
+}
+```
+
+Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.
+
+## 📐 Angivelse av størrelse
+
 👉 Måter å spesifisere størrelse på er: **px**, **em**, **rem**, **%**, **vw**, **vh**
 
 👉 De brukes på ikke bare på **margin**, **padding** osv, men også på **width**, **font-size** o.l.
 
-**px** og **em** er de klart vanligste.
+**px** og **em** er de vanligste.
 
-### 📐 px
+### 🔸 px
+
+**px** angir størrelse i antall piksler. Den er ment å gi en absolutt, forutsigbar verdi. En boks med bredde 300px vil prøve å være nøyaktig 300 piksler bred uavhengig av skjermstørrelse.
 
 Verdier kan settes direkte, som her:
 
@@ -230,13 +266,16 @@ div {
 }
 ```
 
-Men siden disse elementene angir luft på flere sider, kan angi flere verdier samtidig, og der rekkefølge av tallene (top → right → bottom → left, med klokka) angir :
+For egenskaper som **margin** og **padding**, som kan ha verdier på flere sider av et innhold, vil rekkefølgen av tallene bestemme hvilken side de angir. Rekkefølgen er iht. **top → right → bottom → left**, altså med klokka. Dvs. at 
 
 ```css
 div {
   margin: 10px 20px 30px 40px;
 }
 ```
+
+angir størrelser etter
+
 ```text
 
            10px
@@ -255,7 +294,7 @@ div {
 }
 ```
 
-Videre har man mulighet for å bruke `margin-top`, `margin-right`, `margin-bottom` og `margin-left` også, og det tilsvarende også for `padding` og `border`. Men sistnevnt består egentlig av tre deler,
+Videre har man mulighet for å bruke `margin-top`, `margin-right`, `margin-bottom` og `margin-left`, og det tilsvarende også for `padding` og `border`. Men sistnevnt består egentlig av tre deler,
 
 - `width`
 - `style`
@@ -271,11 +310,12 @@ border-top-color:
 
 osv.
 
-### 📐 rem og em
+### 🔸 rem og em
 
-**rem** og **em** angir størrelse relativt ift. font-size hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet). 
+**rem** og **em** angir størrelse relativt ift. **font-siz**e hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet). 
 
-1em = 1 × gjeldende font-size, 2em = 2 × gjeldende font-size osv.
+> 1em = 1 × gjeldende font-size
+> 2em = 2 × gjeldende font-size
 
 Mer konkret:
 
@@ -284,7 +324,7 @@ Mer konkret:
 
 Hvis ingen font-size er eksplisitt satt, brukes nettleserens standardverdi, som ofte er 16px.
 
-### 📐 %
+### 🔸 %
 
 Prosent er relativ til foreldreelementet.
 
@@ -298,7 +338,7 @@ Prosent er relativ til foreldreelementet.
 }
 ```
 
-### 📐 vw og vh
+### 🔸 vw og vh
 
 **vw** og **vh** står for hhv. vertikal og horisontal viewport.
 
@@ -323,33 +363,9 @@ div {
 }
 ```
 
-## 📦 Content box vs Border box
-
-Vi har to typer bokser, *content* og *border box*. For en contentbox (som er default) av en spesifikk størrelse kommer padding og border i tillegg for den endelig størrelsen av boksen. For border-box er spesifikk størrelse den faktisk størrelse. (Margin gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)
-
-```css
-/* content-box: standard */
-div.content-box {
-  box-sizing: content-box;
-  width: 300px;
-  padding: 20px;
-  border: 5px solid black;
-}
-
-/* border-box: praktisk for layout */
-div.border-box {
-  box-sizing: border-box;
-  width: 300px;
-  padding: 20px;
-  border: 5px solid black;
-}
-```
-
-Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.
-
 ## 🖼️ Display
 
-Blokker kan også vises på ulike måter. De kan vises under hverandre eller ved siden av hverandre, hvilket styres med ulike valg for display:
+Blokker kan vises under hverandre eller ved siden av hverandre. Dette styres med ulike valg for **display**:
 
 - `display: block`
 - `display: inline`
@@ -360,10 +376,10 @@ Det fins i tillegg to valg `flex` og `grid` som vi evt. behandler senere.
 Betydningen er som følger:
 
 - Blokk-elementer legger seg under hverandre
-- Inline-elementer legger seg ved siden av hverandre (uten egne width/height-settinger)
-- Inline-block legger seg ved siden av hverandre (og kan ha egne width/height-settinger)
+- Inline-elementer legger seg ved siden av hverandre, men uten egne width/height-settinger
+- Inline-block legger seg ved siden av hverandre og kan ha egne width/height-settinger
   
-En `display: block` starter på ny linje og tar hele tilgjengelige bredden (som standard). Den respekterer både `width`, `height`, `margin`, `padding` og `border` som brukeren evt. setter.
+En `display: block` starter på ny linje og tar hele tilgjengelige bredde (som standard). Den respekterer både `width`, `height`, `margin`, `padding` og `border` som brukeren evt. setter.
 
 ```text
 BLOCK-ELEMENTER
@@ -381,7 +397,7 @@ BLOCK-ELEMENTER
 +---------------------------+
 ```
 
-`display: inline` gir inline-elementer. Den starter ikke på ny linje, legger seg ved siden av omgivelsene, flyter inni tekstlinjen, og høyde/bredde tilpasses innholdet. Den respekterer heller ikke vertikal margin/padding slik blokker gjør.
+`display: inline` gir inline-elementer. De starter ikke nødvendigvis på ny linje, men legger seg ved siden av omgivelsene og flyter inni tekstlinjen (som f.eks. fet skrift gjør i vanlig tekst). Høyde/bredde tilpasses innholdet.
 
 ```text
 +---------+  +---------+  +---------+
@@ -389,23 +405,25 @@ BLOCK-ELEMENTER
 +---------+  +---------+  +---------+
 ```
 
-`display: inline-block` er lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut, dvs. at den kan ha høyde og bredde som skiller fra de umiddlabare omgivelsen.
+`display: inline-block` er nokså lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut, dvs. at den kan ha høyde og bredde som skiller fra den umiddelbare omgivelsen.
 
-Margin skaper avstand mellom alle disse blokk-typene.
+**margin** skaper avstand mellom alle disse blokk-typene.
+
+Vi har
 
 👉 Block-baserte tekstelementer: **div**, **pre** og **p** 
 
 👉 Inline-baserte tekstelementer: **code** og **span**
 
-Det er CSS-spesifikasjonen + user agent stylesheet som realiserer dette i praksis.
+Det er egentlig ikke HTML-standarden som tvinger fram boksegenskapene til disse elementene. Isteden er det nettleseren (kalt *user agent stylesheet* i denne sammenheng) og brukerens CSS-spesifikasjoner som realiserer dette. I prinsippet kan man endre boksegenskapene til f.eks. **code**, selv om dette ikke er i tråd med godt design.
 
-👉 Normal flyt – blokk
+👉 Normal flyt – blokk:
 
-Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
+> Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
 
-👉 Normal flyt – inline
+👉 Normal flyt – inline:
 
-Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
+> Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
 
 Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
 
@@ -413,7 +431,7 @@ Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir altern
 
 Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er viktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
 
-✅ Tekst-relaterte egenskaper arves, dvs, egenskaper som
+👉 Tekst-relaterte egenskaper arves, dvs, egenskaper som
 
 - color
 - font-family
@@ -423,7 +441,7 @@ Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen beste
 - text-align
 - visibility
 
-❌ Boks- og layout-egenskaper arves ikke, dvs. egenskaper som
+👉 Boks- og layout-egenskaper arves ikke, dvs. egenskaper som
 
 - margin
 - padding
@@ -435,7 +453,7 @@ Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen beste
 - background
 - box-shadow
 
-Man har imidlertid kodeordet/verdien `inherit` som ta verdien fra forelder, uansett om den normalt arves eller ikke. Slik brukes den
+Man har imidlertid kodeordet/verdien `inherit` som tar verdien fra forelder, uansett om den normalt arves eller ikke. Slik brukes den:
 
 ```css
 div {
@@ -443,9 +461,9 @@ div {
 }
 ```
 
-I forlengelsen av alt dette er det også verdt å nevne at det ikke er definert default-verdier for egenskaper i HTML-standarden. Nettlesere (i denne sammenheng kalt *user agent stylesheet*) setter imildertid typisk flere av disse (med kun mindre forskjeller mellom ulike lesere).
+I forlengelsen av alt dette er det også verdt å nevne at det ikke er definert default-verdier for egenskaper i HTML-standarden. Nettlesere (*user agent stylesheet*) setter imidlertid typisk flere av disse (med kun mindre forskjeller mellom ulike lesere).
 
-Når det gjelder arverekkefølge, så kan den for tekst typisk se slik ut:
+Når det gjelder arverekkefølge, kan den for tekstelementer typisk se slik ut:
 
 ```text
 html
@@ -456,7 +474,7 @@ html
                 └── code, span
 ```
 
-Rekkefølgen er ikke gitt direkte av HTML-standarden, men er en blanding av hvordan rekkefølgen fremkommer av selve HTML-documentet man jobber med (hva som ligger inni hva) og HTMLs såkalte *content model*. Kort fortalt har man ulike innholdstyper i HTML:
+Rekkefølgen er ikke gitt direkte av HTML-standarden, men er en blanding av hvordan rekkefølgen fremkommer av selve HTML-dokumentet man jobber med (hva som ligger inni hva) og HTMLs såkalte *content model*. Kort fortalt har man ulike innholdstyper i HTML:
 
 - **Flow content**: det meste av vanlige elementer
 - **Phrasing content**: inline-tekstinnhold
@@ -470,7 +488,7 @@ Og så har man regler som:
 - Flow-elementer kan inneholde phrasing
 - Phrasing kan bare inneholde phrasing
 
-Dette kan være greit å kjenne til, men det er kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. *content model*:
+Dette kan være greit å kjenne til, men det er likevel kjappere å forholde seg til følgende tabell, som for hvert tekstelement sier hvilke det kan inneholde og ikke iht. *content model*:
 
 ```text
 Forelder\Barn   div     p     pre   code    span
@@ -505,7 +523,7 @@ div {
 }
 ```
 
-Problemet er da at *alle* **div** endres iht. dette, om man ønsker det eller ikke. Man kan derfor innføre sin egen **div**, f.eks. **info** ved CLASS-konstruksjonen i HTML
+Dette fungerer, men problemet er da at *alle* **div** endres iht. dette, om man ønsker det eller ikke. Men man kan heldigvis innføre sin egen **div**, f.eks. en kalt **info**, ved CLASS-konstruksjonen i HTML som følger:
 
 ```html
 <div class="info">
@@ -513,7 +531,7 @@ Problemet er da at *alle* **div** endres iht. dette, om man ønsker det eller ik
 </div>
 ```
 
-og stile disse forekomstene (uten å påvirke global **div**) ved konstruksjoner som
+Dermed kan man stile alle forekomstene av disse uten å påvirke global **div**. Man har flere måter å gjøre dette på, som vi skal se, men vi kan starte med denne:
 
 ```css
 .info {
@@ -521,14 +539,75 @@ og stile disse forekomstene (uten å påvirke global **div**) ved konstruksjoner
 }
 ```
 
-Dette er en nyttig utnyttelse av klasser. Men man kan også bruke denne info-stilen vår på andre elementer, f.eks. **p**:
+Alle forekomster av `<div class="info">` får blå tekst. Dette er svært nyttig og benyttes over alt. Men CLASS kan utnyttes på flere måter. Man kan nemlig anvende denne flotte, blå info-stilen vår også på andre elementer, f.eks. på **p** ved:
 
 ```html
 <p class="info">
     God påske!
 </div>
 ```
-slik at man også kan gruppere et sett av egenskaper med verdier, og anvende dem på flere elementer, f eks. for en enhetlig stil eller oppførsel.
+
+Den ovennevnte CSS-regelblokken vår vil treffe både `<div class="info">` og `<p class="info">`, og vil blåfarge teksten i alle forekomster av begge.
+
+Man kunne vært mer spesifikk og formatert dem separat ved;
+
+```css
+div.info {
+    color: darkblue;
+}
+```
+
+```css
+p.info {
+    color: blue;
+}
+```
+
+Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende den på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.
+
+La oss se på et eksempel skribenter ofte støter på. Ofte konverterer man via **pandoc** fra et skrivevennlig format til HTML. La oss si vi har et Asciidoc-dokument som inneholder kodeeksempler, med f.eks. en illustrasjon av en `fd`-kommando i bourne-shell:
+
+```text
+[source,bash]
+----
+fd -e css .
+----
+```
+
+*pandoc** konverterer denne blokken til et HTML-element av typen
+
+```html
+<pre>
+  <code class="language-bash"> ...
+```
+
+Dermed kan man style kodeeksempelet vha.
+
+```css
+.language-bash {
+    color: lightblue;
+    background: darkblue;
+}
+```
+
+eller bedre og mer spesifikt ved
+
+```css
+code.language-bash {
+    color: lightblue;
+    background: darkblue;
+}
+```
+
+Som vi skal se i neste kapittel, har vi også også mulighet til å stile det ved
+
+```css
+pre code.language-bash {
+    color: lightblue;
+    background: darkblue;
+}
+
+der vi kun stiler forekomster av `<code class="language-bash">` som ligger inni en `<pre>` (en såkalt kombinert selektor).
 
 ```text
 id  >  class  >  element
