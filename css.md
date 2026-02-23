@@ -97,9 +97,9 @@ CSS står for *Cascading Style Sheets*, som representerer:
 
 CSS kobles til HTML via:
 
-1. Selektor – hva du vil style (f.eks. **p**, **.boks**, **#header**)
+1. Selektor – hva du vil style (f.eks. **p**, **.boks**, **header**)
 2. Egenskap – hva du vil endre (f.eks. **color**, **font-size**, **margin**)
-3. Verdi – hvordan du vil endre det (f.eks. blue, 1.2rem, 10px)
+3. Verdi – hvordan du vil endre det (f.eks. **blue**, **1.2rem**, 1**0px**)
 
 Eksempel:
 
@@ -108,13 +108,6 @@ Eksempel:
 p {
     color: darkblue;
     line-height: 1.5;
-}
-
-/* Stiler alt med klasse "boks" */
-.boks {
-    background-color: #f0f0f0;
-    padding: 1rem;
-    border: 1px solid #ccc;
 }
 ```
 
@@ -134,13 +127,6 @@ selektor {
     egenskap: verdi;
 }
 ```
-
-der
-
-- **selektor** (selector) bestemmer hvilke HTML-elementer regelen gjelder for
-- **{ ... }** regelblokk (rule block) inneholder én eller flere deklarasjoner
-- **egenskap** (property) angir hva vil endre (f.eks. margin eller display)
-- **verdi** (value)	er verdien man setter på egenskapen (f.eks. red eller 10px)
 
 Når det gjelder arv, er det slik at noen egenskaper arves (som `color`) og andre ikke (som `padding`), og i tillegg er det et arvehierarki som gjelder I HTML/CSS (som f.eks `<body>` → `<div>` → `<p>`). Vi skal komme tilbake til dette, men de formelle spesifikasjonene er å finne på
 
@@ -217,11 +203,11 @@ De fleste elementer har boksegenskaper, f.eks. overskrifter, **p**, **div**, **s
 +-----------------------------------------------------------+
 ```
 
-Vi ser at størrelsen av innholdet kan spesifiseres ved **width** og **height**, og man kan angi luft (**padding**) og ramme rundt (**border**) dette. Rundt dette igjen, rundt selve boksen, kan man så også legge inn luft i form av **margin**.
+Vi ser at størrelsen av innholdet kan spesifiseres ved **width** og **height**, og man kan angi luft (**padding**) og ramme rundt dette (**border**). Rundt dette igjen, rundt selve boksen, kan man så også legge inn luft i form av **margin**.
 
 ## 📦 Content box vs Border box
 
-Vi har to typer bokser, *content* og *border box*. For en contentbox (som er default) kommer **padding** og **border** i tillegg i bestemmelse av den endelig størrelsen. For border-box er spesifikk størrelse også den faktisk størrelsen. (Men husk at **margin** gjelder alltid utenfor boksen, uansett hvilken box-sizing man bruker.)
+Vi har to typer bokser, *content* og *border box*. For en content box (som er default) kommer **padding** og **border** i tillegg i bestemmelse av endelig størrelse. For border-box er spesifikk størrelse også den faktisk størrelsen. (Husk at **margin** alltid gjelder utenfor boksen, uansett hvilken box-sizing man bruker.)
 
 Slik settes de:
 
@@ -243,11 +229,9 @@ div.border-box {
 }
 ```
 
-Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.
-
 ## 📐 Angivelse av størrelse
 
-👉 Måter å spesifisere størrelse på er: **px**, **em**, **rem**, **%**, **vw**, **vh**
+👉 Måter å spesifisere størrelse på er: **px**, **em**, **rem**, **%**, **vw** og **vh**
 
 👉 De brukes på ikke bare på **margin**, **padding** osv, men også på **width**, **font-size** o.l.
 
@@ -257,7 +241,7 @@ Disse påvirker tolkningen av WIDTH og HEIGTH for innholdet.
 
 **px** angir størrelse i antall piksler. Den er ment å gi en absolutt, forutsigbar verdi. En boks med bredde 300px vil prøve å være nøyaktig 300 piksler bred uavhengig av skjermstørrelse.
 
-Verdier kan settes direkte, som her:
+Verdier kan settes direkte som her:
 
 ```css
 div {
@@ -266,7 +250,7 @@ div {
 }
 ```
 
-For egenskaper som **margin** og **padding**, som kan ha verdier på flere sider av et innhold, vil rekkefølgen av tallene bestemme hvilken side de angir. Rekkefølgen er iht. **top → right → bottom → left**, altså med klokka. Dvs. at 
+For egenskaper som **margin** og **padding**, som kan ha verdier på flere sider av et innhold, vil rekkefølgen av tallene bestemme siden de angir. Rekkefølgen er iht. **top → right → bottom → left**, altså med klokka. Dvs. at 
 
 ```css
 div {
@@ -283,7 +267,7 @@ angir størrelser etter
            30px
 ```
 
-Man har også definert betydningen
+Man har også definert betydningene
 
 ```css
 div {
@@ -312,17 +296,14 @@ osv.
 
 ### 🔸 rem og em
 
-**rem** og **em** angir størrelse relativt ift. **font-siz**e hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet). 
+**rem** og **em** angir størrelse relativt til **font-siz**e hos hhv. rot (HTML) eller hos seg selv (eller forelderelementet). 
 
-> 1em = 1 × gjeldende font-size
-> 2em = 2 × gjeldende font-size
+```text
+1em = 1 × gjeldende font-size
+2em = 2 × gjeldende font-size
+```
 
-Mer konkret:
-
-- font-size → baseres på forelder
-- padding og margin etc → baseres på elementets egen beregnede font-size
-
-Hvis ingen font-size er eksplisitt satt, brukes nettleserens standardverdi, som ofte er 16px.
+Hvis ingen **font-size** er eksplisitt satt, brukes nettleserens standardverdi som basis (ofte er 16px).
 
 ### 🔸 %
 
@@ -365,7 +346,7 @@ div {
 
 ## 🖼️ Display
 
-Blokker kan vises under hverandre eller ved siden av hverandre. Dette styres med ulike valg for **display**:
+Blokker kan vises under eller ved siden av hverandre. Dette styres med ulike valg for **display**:
 
 - `display: block`
 - `display: inline`
@@ -409,7 +390,7 @@ BLOCK-ELEMENTER
 
 **margin** skaper avstand mellom alle disse blokk-typene.
 
-Vi har
+Vi har:
 
 👉 Block-baserte tekstelementer: **div**, **pre** og **p** 
 
@@ -419,19 +400,23 @@ Det er egentlig ikke HTML-standarden som tvinger fram boksegenskapene til disse 
 
 👉 Normal flyt – blokk:
 
-> Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
+```text
+Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
+```
 
 👉 Normal flyt – inline:
 
-> Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
+```text
+Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
+```
 
 Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
 
 ## 🌳 Arv
 
-Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er viktige siden arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
+Vi må si litt mer om hva som arves og ikke, samt hvordan arverekkefølgen bestemmes. Arv er  altså viktige fordi arvelige egenskaper satt for forfedre kan bli gjeldene for aktuelt element. 
 
-👉 Tekst-relaterte egenskaper arves, dvs, egenskaper som
+👉 Tekst-relaterte egenskaper arves, dvs. egenskaper som
 
 - color
 - font-family
@@ -513,7 +498,7 @@ OL (ordered list)     → container for nummerert liste
 
 Beholderne kan ligge inni **div**, men ikke i **p** eller **pre**. (På den annen side kan **div**, **p**, **pre**, **code**, **span** disse ligge inne **li**, om ønskelig.)
 
-## 🏷️ ID og Class
+## 🏷️ Class
 
 Man kan formatere f.eks. en **div** med:
 
@@ -531,7 +516,7 @@ Dette fungerer, men problemet er da at *alle* **div** endres iht. dette, om man 
 </div>
 ```
 
-Dermed kan man stile alle forekomstene av disse uten å påvirke global **div**. Man har flere måter å gjøre dette på, som vi skal se, men vi kan starte med denne:
+Dermed kan man stile alle forekomstene av disse videre uten å påvirke global **div**. Man har flere måter å gjøre dette på, som vi skal se, men vi kan starte med denne:
 
 ```css
 .info {
@@ -539,7 +524,7 @@ Dermed kan man stile alle forekomstene av disse uten å påvirke global **div**.
 }
 ```
 
-Alle forekomster av `<div class="info">` får blå tekst. Dette er svært nyttig og benyttes over alt. Men CLASS kan utnyttes på flere måter. Man kan nemlig anvende denne flotte, blå info-stilen vår også på andre elementer, f.eks. på **p** ved:
+Alle forekomster av `<... class="info">` får blå tekst. Dette er svært nyttig og benyttes over alt. Men CLASS kan utnyttes på flere måter. Man kan nemlig anvende denne flotte, blå info-stilen vår også på andre elementer, f.eks. på **p** ved:
 
 ```html
 <p class="info">
@@ -547,7 +532,7 @@ Alle forekomster av `<div class="info">` får blå tekst. Dette er svært nyttig
 </div>
 ```
 
-Den ovennevnte CSS-regelblokken vår vil treffe både `<div class="info">` og `<p class="info">`, og vil blåfarge teksten i alle forekomster av begge.
+Den ovennevnte CSS-regelblokken vår vil treffe både `<div class="info">` og `<p class="info">`, og teksten blir blåfarget i alle forekomster av begge.
 
 Man kunne vært mer spesifikk og formatert dem separat ved;
 
@@ -565,16 +550,7 @@ p.info {
 
 Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende den på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.
 
-La oss se på et eksempel skribenter ofte støter på. Ofte konverterer man via **pandoc** fra et skrivevennlig format til HTML. La oss si vi har et Asciidoc-dokument som inneholder kodeeksempler, med f.eks. en illustrasjon av en `fd`-kommando i bourne-shell:
-
-```text
-[source,bash]
-----
-fd -e css .
-----
-```
-
-*pandoc** konverterer denne blokken til et HTML-element av typen
+La oss se på et eksempel skribenter fort støter på. Ofte konverterer man fra Markdown (med **pandoc**) eller fra Asciidoc (med **asciidoctor**) til HTML. De to første formatene er brukervennlige, men ikke like universelt tilgjengelig for lesing som HTML. La oss si vi har et Asciidoc-dokument som inneholder kodeeksempler, f.eks. en illustrasjon av en `fd`-kommando i bourne-shell. Kodeblokker som `[source,bash]` konverteres av **asciidoctor** til et HTML-elementer av typen
 
 ```html
 <pre>
@@ -599,27 +575,29 @@ code.language-bash {
 }
 ```
 
-Som vi skal se i neste kapittel, har vi også også mulighet til å stile det ved
+Som vi skal se i neste kapittel, har vi også mulighet til å stile det ved
 
 ```css
 pre code.language-bash {
     color: lightblue;
     background: darkblue;
 }
-
-der vi kun stiler forekomster av `<code class="language-bash">` som ligger inni en `<pre>` (en såkalt kombinert selektor).
-
-```text
-id  >  class  >  element
 ```
 
-**ID** er en beslektet
+der vi kun stiler forekomster av `<code class="language-bash">` som ligger inni en **pre** (en såkalt kombinert selektor), samt ved
+
+```css
+pre .language-bash {
+    color: lightblue;
+    background: darkblue;
+}
+```
+
+som stiler alle forekomster av `class="language-bash"` inni en **div** (altså f.eks. også en `<p class="language-bash">` inni en **div**).
 
 ## 🔗 Kombinerte selektorer
 
-Kombinerte selektorer er
-
-Oversikt over de viktigste kombinasjonene:
+Kombinerte selektorer er måter å velge HTML-elementer på basert på deres relasjon til andre elementer i dokumentstrukturen. Her ser vi de viktigste kombinasjonene:
 
 ```text
 Selektor	Betydning
@@ -629,7 +607,7 @@ A + B       B kommer rett etter A
 A ~ B       B er senere søsken av A
 ```
 
-Det følgende forsøker å stile forekomster av **code** under forutsetning at de ligger inni en **p**:
+Det følgende forsøker dermed å stile alle forekomster av **code** under forutsetning at de ligger inni en **pre**:
 
 ```css
 pre code {
@@ -665,3 +643,15 @@ forlanger man at **code** er direkte barn av **pre**, slik at det bare matcher
 osv.
 
 **pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
+
+Moderne nettlesere støtter også **has**-selektor:
+
+```css
+pre:has(code.language-bash) {
+  background: lightgray;
+}
+```
+
+som formater **pre** kun hvis den inneholder bash-kode 
+(støttes ikke overalt).
+
