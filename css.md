@@ -1,11 +1,11 @@
 # 📝 Litt om CSS
 
-Her skal vi se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Det vil bli fokusert mest på tekstlige elementer.
+Vi skal se litt på grunnleggende CSS. Heftet retter seg ikke mot folk som har eller skal jobbe intensivt med HTML/CSS. Snarere er det for folk som kommer borti det av og til, som kanskje skal endre eller lage en mindre CCS for HTML, EPUB etc, og som trenger litt forståelse. CSS-standarden er stor og omhandler mye. Vi vil i dette heftet ignore ting som ulike paneler, grids, bilder, tabeller mm, og vil fokusere mest på tekstlige elementer.
 
 
 ## 🌐 Overordnet HTML
 
-Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike *mark-ups* for fet eller kursiv skrift og den slags, behandles ikke. Her fokuseres det på struktur med relevans for stiling.
+Helt grunnleggende HTML antas kjent. Bruk av overskrifter som `<h1>`, linker, ulike *mark-ups* for fet eller kursiv skrift og den slags, behandles ikke. Det fokuseres på struktur med relevans for stiling.
 
 Et HTML-dokument kan strukturelt sett se slik ut:
 
@@ -71,21 +71,21 @@ hvor referansen til CSS-filen som styler dokumentet, er gitt ved
 <link rel="stylesheet" href="style.css">
 ```
 
-Elementene som benyttes er
+Vi ser følgende elementer:
 
-- `<header>` er overskriftsseksjon på toppen av dokumentet
-- `<body>` er alt det synlige innholdet (inkl. header, footer, sidepanel, ...)
-- `<main>` er hovedinnhold
-- `<section>` er logiske grupper av innhold (f.eks. kapitler og emner)
-- `<div>` er en generell beholder, typisk for avsnittspreget layout og styling
-- `<p>` er vanlig avsnitt
-- `<pre>` er preformatert tekst som beholder linjeskift og mellomrom
-- `<footer>` er bunntekst
+- `<header>` → overskriftsseksjon på toppen av dokumentet
+- `<body>` → alt det synlige innholdet (inkl. header, footer, sidepanel, ...)
+- `<main>` → hovedinnhold
+- `<section>` → logiske grupper av innhold (f.eks. kapitler og emner)
+- `<div>` → en generell beholder som bukes svært mye for gruppering og strukturering
+- `<p>` → vanlig avsnitt
+- `<pre>` → preformatert tekst som beholder linjeskift og mellomrom
+- `<footer>` → bunntekst
 
 Andre viktige tekstlige elementer er bl.a:
 
-- `<code>` – for formatering av kodeaktige ord
-- `<span>` – generell beholder for mer ordbasert formatering
+- `<code>` → for formatering av kodeaktige ord
+- `<span>` → generell beholder for mer ordbasert formatering
 
 ## 🎨 Hva er CSS?
 
@@ -101,13 +101,20 @@ CSS kobles til HTML via:
 2. Egenskap – hva du vil endre (f.eks. **color**, **font-size**, **margin**)
 3. Verdi – hvordan du vil endre det (f.eks. **blue**, **1.2rem**, 1**0px**)
 
-Eksempel:
+Eksempel: Det følgende stiler alle **p**-avsnitt:
 
 ```css
-/* Stiler alle <p>-avsnitt */
 p {
     color: darkblue;
     line-height: 1.5;
+}
+```
+
+Det følgende stiler alle forekomster av både **p** og **code**:
+
+```css
+p, code {
+    background: lightblue;
 }
 ```
 
@@ -207,7 +214,7 @@ Vi ser at størrelsen av innholdet kan spesifiseres ved **width** og **height**,
 
 ## 📦 Content box vs Border box
 
-Vi har to typer bokser, *content* og *border box*. For en content box (som er default) kommer **padding** og **border** i tillegg i bestemmelse av endelig størrelse. For border-box er spesifikk størrelse også den faktisk størrelsen. (Husk at **margin** alltid gjelder utenfor boksen, uansett hvilken box-sizing man bruker.)
+Vi har to typer bokser, *content* og *border box*. For en *content box* (som er default) kommer **padding** og **border** i tillegg i bestemmelse av endelig størrelse. For *border-box* er spesifikk størrelse også den faktisk størrelsen. (Husk at **margin** alltid gjelder utenfor boksen, uansett hvilken box-sizing man bruker.)
 
 Slik settes de:
 
@@ -303,7 +310,7 @@ osv.
 2em = 2 × gjeldende font-size
 ```
 
-Hvis ingen **font-size** er eksplisitt satt, brukes nettleserens standardverdi som basis (ofte er 16px).
+Hvis ingen **font-size** er eksplisitt satt, brukes nettleserens standardverdi som basis (ofte 16px).
 
 ### 🔸 %
 
@@ -352,7 +359,7 @@ Blokker kan vises under eller ved siden av hverandre. Dette styres med ulike val
 - `display: inline`
 - `display: inline-block`
 
-Det fins i tillegg to valg `flex` og `grid` som vi evt. behandler senere.
+Det fins i tillegg to valg `flex` og `grid` som vi ikke behandler foreløpig (men som har å gjøre med organisering av innhold i rader og kolonner).
 
 Betydningen er som følger:
 
@@ -386,7 +393,7 @@ BLOCK-ELEMENTER
 +---------+  +---------+  +---------+
 ```
 
-`display: inline-block` er nokså lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut, dvs. at den kan ha høyde og bredde som skiller fra den umiddelbare omgivelsen.
+`display: inline-block` er nokså lik, bare at den respekterer `width`, `height`, `margin` og `padding` fullt ut, dvs. at den kan ha spesifikk høyde og bredde. Hvis dette ikke angis, tilpasses størrelsen innholdet også her.
 
 **margin** skaper avstand mellom alle disse blokk-typene.
 
@@ -400,15 +407,13 @@ Det er egentlig ikke HTML-standarden som tvinger fram boksegenskapene til disse 
 
 👉 Normal flyt – blokk:
 
-```text
 Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.
-```
+
 
 👉 Normal flyt – inline:
 
-```text
 Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.
-```
+
 
 Normal flyt kan endres med `position`, `float`, `flex` og `grid`, som gir alternative måter å plassere elementer på.
 
@@ -467,7 +472,7 @@ Rekkefølgen er ikke gitt direkte av HTML-standarden, men er en blanding av hvor
 - **Heading content**: h1–h6
 - **Interactive content**: button, input, href
 
-Og så har man regler som:
+Og så har man regler som f.eks:
 
 - Flow-elementer kan inneholde flow
 - Flow-elementer kan inneholde phrasing
@@ -508,7 +513,7 @@ div {
 }
 ```
 
-Dette fungerer, men problemet er da at *alle* **div** endres iht. dette, om man ønsker det eller ikke. Men man kan heldigvis innføre sin egen **div**, f.eks. en kalt **info**, ved CLASS-konstruksjonen i HTML som følger:
+Dette fungerer, men problemet er da at *alle* **div** endres iht. dette, hvilket man neppe ønsker for en så mye brukt stil som **div**. Men man kan heldigvis innføre sin egen **div**, f.eks. en kalt **info**, ved CLASS-konstruksjonen i HTML som følger:
 
 ```html
 <div class="info">
@@ -548,7 +553,7 @@ p.info {
 }
 ```
 
-Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende den på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.
+Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende denne på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.
 
 La oss se på et eksempel skribenter fort støter på. Ofte konverterer man fra Markdown (med **pandoc**) eller fra Asciidoc (med **asciidoctor**) til HTML. De to første formatene er brukervennlige, men ikke like universelt tilgjengelig for lesing som HTML. La oss si vi har et Asciidoc-dokument som inneholder kodeeksempler, f.eks. en illustrasjon av en `fd`-kommando i bourne-shell. Kodeblokker som `[source,bash]` konverteres av **asciidoctor** til et HTML-elementer av typen
 
@@ -625,7 +630,7 @@ pre code {
 </pre>
 ```
 
-Bruker man denne
+Bruker man den følgende
 
 ```css
 pre > code {
@@ -642,7 +647,42 @@ forlanger man at **code** er direkte barn av **pre**, slik at det bare matcher
 ```
 osv.
 
-**pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
+Bruker man den følgende,
+
+```css
+h2 + p {
+  color: blue;
+}
+```
+
+forlanger man at **p** komme direkte etter **h2**, hvilket vi kan illustrere med:
+
+```html
+<h2>Overskrift</h2>
+<p>Dette avsnittet blir blått.</p>
+<p>Dette blir IKKE blått.</p>
+```
+
+Og bruker man den følgende,
+
+```css
+h2 ~ p {
+  color: green;
+}
+```
+
+må **h2** og **p** ha samme forelder og **p** komme etter **h2**.
+
+```html
+<h2>Overskrift</h2>
+<p>Dette blir grønt.</p>
+<p>Dette blir også grønt.</p>
+ <div>
+   <p>Dette blir IKKE grønt.</p>
+ </div>
+ ```
+
+Det siste **p**-avsnittet får ikke grønn skrift ettersom det har annen forelder enn **h2**.
 
 Moderne nettlesere støtter også **has**-selektor:
 
@@ -655,3 +695,16 @@ pre:has(code.language-bash) {
 som formater **pre** kun hvis den inneholder bash-kode 
 (støttes ikke overalt).
 
+Vi kan også nevne at selektorer som **pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
+
+Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men forhåpenlig er dette til en hjelp for enkelte.
+
+## 📚 Andre hefter i serien
+
+📘 Linux: Det neste steget
+
+📘 Litt om Git
+
+📘 Litt om VS Code
+
+📘 Litt om GPG

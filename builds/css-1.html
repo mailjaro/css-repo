@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="description" content="Dette heftet tar for seg grunnleggende CSS">
 <meta name="author" content="Jan R Sandbakken">
 <title>Litt om CSS</title>
@@ -585,6 +585,7 @@ pre.rouge .gs {
 <li><a href="#_arv">🌳 Arv</a></li>
 <li><a href="#_️_class">🏷️ Class</a></li>
 <li><a href="#_kombinerte_selektorer">🔗 Kombinerte selektorer</a></li>
+<li><a href="#_andre_hefter_i_serien">📚 Andre hefter i serien</a></li>
 </ul>
 </li>
 </ul>
@@ -604,12 +605,12 @@ pre.rouge .gs {
 <h2 id="_litt_om_css"><a class="anchor" href="#_litt_om_css"></a>📝 Litt om CSS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Her skal vi se litt på grunnleggende CSS. CSS-standarden er stor og omhandler mange ting som det ikke er naturlig å ta for seg i en tidlig fase. Ting som ulike paneler, grids, bilder, tabeller mm, må vi la ligge i denne omgang. Det vil bli fokusert mest på tekstlige elementer.</p>
+<p>Vi skal se litt på grunnleggende CSS. Heftet retter seg ikke mot folk som har eller skal jobbe intensivt med HTML/CSS. Snarere er det for folk som kommer borti det av og til, som kanskje skal endre eller lage en mindre CCS for HTML, EPUB etc, og som trenger litt forståelse. CSS-standarden er stor og omhandler mye. Vi vil i dette heftet ignore ting som ulike paneler, grids, bilder, tabeller mm, og vil fokusere mest på tekstlige elementer.</p>
 </div>
 <div class="sect2">
 <h3 id="_overordnet_html"><a class="anchor" href="#_overordnet_html"></a>🌐 Overordnet HTML</h3>
 <div class="paragraph">
-<p>Helt grunnleggende HTML antas kjent. Bruk av overskrifter som <code>&lt;h1&gt;</code>, linker, ulike <em>mark-ups</em> for fet eller kursiv skrift og den slags, behandles ikke. Her fokuseres det på struktur med relevans for stiling.</p>
+<p>Helt grunnleggende HTML antas kjent. Bruk av overskrifter som <code>&lt;h1&gt;</code>, linker, ulike <em>mark-ups</em> for fet eller kursiv skrift og den slags, behandles ikke. Det fokuseres på struktur med relevans for stiling.</p>
 </div>
 <div class="paragraph">
 <p>Et HTML-dokument kan strukturelt sett se slik ut:</p>
@@ -682,33 +683,33 @@ Beholder mellomrom og linjeskift.
 </div>
 </div>
 <div class="paragraph">
-<p>Elementene som benyttes er</p>
+<p>Vi ser følgende elementer:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;header&gt;</code> er overskriftsseksjon på toppen av dokumentet</p>
+<p><code>&lt;header&gt;</code> → overskriftsseksjon på toppen av dokumentet</p>
 </li>
 <li>
-<p><code>&lt;body&gt;</code> er alt det synlige innholdet (inkl. header, footer, sidepanel, &#8230;&#8203;)</p>
+<p><code>&lt;body&gt;</code> → alt det synlige innholdet (inkl. header, footer, sidepanel, &#8230;&#8203;)</p>
 </li>
 <li>
-<p><code>&lt;main&gt;</code> er hovedinnhold</p>
+<p><code>&lt;main&gt;</code> → hovedinnhold</p>
 </li>
 <li>
-<p><code>&lt;section&gt;</code> er logiske grupper av innhold (f.eks. kapitler og emner)</p>
+<p><code>&lt;section&gt;</code> → logiske grupper av innhold (f.eks. kapitler og emner)</p>
 </li>
 <li>
-<p><code>&lt;div&gt;</code> er en generell beholder, typisk for avsnittspreget layout og styling</p>
+<p><code>&lt;div&gt;</code> → en generell beholder som bukes svært mye for gruppering og strukturering</p>
 </li>
 <li>
-<p><code>&lt;p&gt;</code> er vanlig avsnitt</p>
+<p><code>&lt;p&gt;</code> → vanlig avsnitt</p>
 </li>
 <li>
-<p><code>&lt;pre&gt;</code> er preformatert tekst som beholder linjeskift og mellomrom</p>
+<p><code>&lt;pre&gt;</code> → preformatert tekst som beholder linjeskift og mellomrom</p>
 </li>
 <li>
-<p><code>&lt;footer&gt;</code> er bunntekst</p>
+<p><code>&lt;footer&gt;</code> → bunntekst</p>
 </li>
 </ul>
 </div>
@@ -718,10 +719,10 @@ Beholder mellomrom og linjeskift.
 <div class="ulist">
 <ul>
 <li>
-<p><code>&lt;code&gt;</code> – for formatering av kodeaktige ord</p>
+<p><code>&lt;code&gt;</code> → for formatering av kodeaktige ord</p>
 </li>
 <li>
-<p><code>&lt;span&gt;</code> – generell beholder for mer ordbasert formatering</p>
+<p><code>&lt;span&gt;</code> → generell beholder for mer ordbasert formatering</p>
 </li>
 </ul>
 </div>
@@ -761,14 +762,23 @@ Beholder mellomrom og linjeskift.
 </ol>
 </div>
 <div class="paragraph">
-<p>Eksempel:</p>
+<p>Eksempel: Det følgende stiler alle <strong>p</strong>-avsnitt:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="css"><span class="c">/* Stiler alle &lt;p&gt;-avsnitt */</span>
-<span class="nt">p</span> <span class="p">{</span>
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">p</span> <span class="p">{</span>
     <span class="nl">color</span><span class="p">:</span> <span class="nx">darkblue</span><span class="p">;</span>
     <span class="nl">line-height</span><span class="p">:</span> <span class="m">1.5</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det følgende stiler alle forekomster av både <strong>p</strong> og <strong>code</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">p</span><span class="o">,</span> <span class="nt">code</span> <span class="p">{</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="nx">lightblue</span><span class="p">;</span>
 <span class="p">}</span></code></pre>
 </div>
 </div>
@@ -781,7 +791,7 @@ Beholder mellomrom og linjeskift.
 <p>CSS separerer struktur (HTML) fra utseende (CSS) → lettere vedlikehold.</p>
 </li>
 <li>
-<p>En regel består alltid av selektor + deklarasjonsblokk</p>
+<p>En regel består alltid av selektor &#43; deklarasjonsblokk</p>
 </li>
 <li>
 <p>CSS arves nedover i dokumentet (f.eks. <code>color</code> fra <code>&lt;body&gt;</code> arves til <code>&lt;p&gt;</code>)</p>
@@ -898,7 +908,7 @@ Beholder mellomrom og linjeskift.
 <div class="sect2">
 <h3 id="_content_box_vs_border_box"><a class="anchor" href="#_content_box_vs_border_box"></a>📦 Content box vs Border box</h3>
 <div class="paragraph">
-<p>Vi har to typer bokser, <em>content</em> og <em>border box</em>. For en content box (som er default) kommer <strong>padding</strong> og <strong>border</strong> i tillegg i bestemmelse av endelig størrelse. For border-box er spesifikk størrelse også den faktisk størrelsen. (Husk at <strong>margin</strong> alltid gjelder utenfor boksen, uansett hvilken box-sizing man bruker.)</p>
+<p>Vi har to typer bokser, <em>content</em> og <em>border box</em>. For en <em>content box</em> (som er default) kommer <strong>padding</strong> og <strong>border</strong> i tillegg i bestemmelse av endelig størrelse. For <em>border-box</em> er spesifikk størrelse også den faktisk størrelsen. (Husk at <strong>margin</strong> alltid gjelder utenfor boksen, uansett hvilken box-sizing man bruker.)</p>
 </div>
 <div class="paragraph">
 <p>Slik settes de:</p>
@@ -1025,7 +1035,7 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Hvis ingen <strong>font-size</strong> er eksplisitt satt, brukes nettleserens standardverdi som basis (ofte er 16px).</p>
+<p>Hvis ingen <strong>font-size</strong> er eksplisitt satt, brukes nettleserens standardverdi som basis (ofte 16px).</p>
 </div>
 </div>
 <div class="sect3">
@@ -1102,7 +1112,7 @@ border-top-color:</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Det fins i tillegg to valg <code>flex</code> og <code>grid</code> som vi evt. behandler senere.</p>
+<p>Det fins i tillegg to valg <code>flex</code> og <code>grid</code> som vi ikke behandler foreløpig (men som har å gjøre med organisering av innhold i rader og kolonner).</p>
 </div>
 <div class="paragraph">
 <p>Betydningen er som følger:</p>
@@ -1151,7 +1161,7 @@ border-top-color:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>display: inline-block</code> er nokså lik, bare at den respekterer <code>width</code>, <code>height</code>, <code>margin</code> og <code>padding</code> fullt ut, dvs. at den kan ha høyde og bredde som skiller fra den umiddelbare omgivelsen.</p>
+<p><code>display: inline-block</code> er nokså lik, bare at den respekterer <code>width</code>, <code>height</code>, <code>margin</code> og <code>padding</code> fullt ut, dvs. at den kan ha spesifikk høyde og bredde. Hvis dette ikke angis, tilpasses størrelsen innholdet også her.</p>
 </div>
 <div class="paragraph">
 <p><strong>margin</strong> skaper avstand mellom alle disse blokk-typene.</p>
@@ -1171,18 +1181,14 @@ border-top-color:</code></pre>
 <div class="paragraph">
 <p>👉 Normal flyt – blokk:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="text">Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.</code></pre>
-</div>
+<div class="paragraph">
+<p>Blokkelementer plasseres vertikalt under hverandre, fyller tilgjengelig bredde og skyver påfølgende elementer nedover.</p>
 </div>
 <div class="paragraph">
 <p>👉 Normal flyt – inline:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="text">Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.</code></pre>
-</div>
+<div class="paragraph">
+<p>Inline-elementer plasseres horisontalt i samme linje som tekst, bruker bare nødvendig bredde og brytes automatisk til ny linje når det ikke er mer plass.</p>
 </div>
 <div class="paragraph">
 <p>Normal flyt kan endres med <code>position</code>, <code>float</code>, <code>flex</code> og <code>grid</code>, som gir alternative måter å plassere elementer på.</p>
@@ -1304,7 +1310,7 @@ border-top-color:</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Og så har man regler som:</p>
+<p>Og så har man regler som f.eks:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1364,7 +1370,7 @@ OL (ordered list)     → container for nummerert liste
 </div>
 </div>
 <div class="paragraph">
-<p>Dette fungerer, men problemet er da at <em>alle</em> <strong>div</strong> endres iht. dette, om man ønsker det eller ikke. Men man kan heldigvis innføre sin egen <strong>div</strong>, f.eks. en kalt <strong>info</strong>, ved CLASS-konstruksjonen i HTML som følger:</p>
+<p>Dette fungerer, men problemet er da at <em>alle</em> <strong>div</strong> endres iht. dette, hvilket man neppe ønsker for en så mye brukt stil som <strong>div</strong>. Men man kan heldigvis innføre sin egen <strong>div</strong>, f.eks. en kalt <strong>info</strong>, ved CLASS-konstruksjonen i HTML som følger:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1414,7 +1420,7 @@ OL (ordered list)     → container for nummerert liste
 </div>
 </div>
 <div class="paragraph">
-<p>Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende den på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.</p>
+<p>Dette betyr at man kan gruppere et sett av egenskaper med verdier i en klasse, og anvende denne på flere elementer, f.eks. for en mer enhetlig stil eller oppførsel.</p>
 </div>
 <div class="paragraph">
 <p>La oss se på et eksempel skribenter fort støter på. Ofte konverterer man fra Markdown (med <strong>pandoc</strong>) eller fra Asciidoc (med <strong>asciidoctor</strong>) til HTML. De to første formatene er brukervennlige, men ikke like universelt tilgjengelig for lesing som HTML. La oss si vi har et Asciidoc-dokument som inneholder kodeeksempler, f.eks. en illustrasjon av en <code>fd</code>-kommando i bourne-shell. Kodeblokker som <code>[source,bash]</code> konverteres av <strong>asciidoctor</strong> til et HTML-elementer av typen</p>
@@ -1510,7 +1516,7 @@ A ~ B       B er senere søsken av A</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Bruker man denne</p>
+<p>Bruker man den følgende</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1533,7 +1539,53 @@ A ~ B       B er senere søsken av A</code></pre>
 <p>osv.</p>
 </div>
 <div class="paragraph">
-<p><strong>pre code</strong> har høyere spesifisitet enn bare <strong>code</strong>, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.</p>
+<p>Bruker man den følgende,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">h2</span> <span class="o">+</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">blue</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>forlanger man at <strong>p</strong> komme direkte etter <strong>h2</strong>, hvilket vi kan illustrere med:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;h2&gt;</span>Overskrift<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>Dette avsnittet blir blått.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Dette blir IKKE blått.<span class="nt">&lt;/p&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Og bruker man den følgende,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="css"><span class="nt">h2</span> <span class="o">~</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">green</span><span class="p">;</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>må <strong>h2</strong> og <strong>p</strong> ha samme forelder og <strong>p</strong> komme etter <strong>h2</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;h2&gt;</span>Overskrift<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>Dette blir grønt.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>Dette blir også grønt.<span class="nt">&lt;/p&gt;</span>
+ <span class="nt">&lt;div&gt;</span>
+   <span class="nt">&lt;p&gt;</span>Dette blir IKKE grønt.<span class="nt">&lt;/p&gt;</span>
+ <span class="nt">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det siste <strong>p</strong>-avsnittet får ikke grønn skrift ettersom det har annen forelder enn <strong>h2</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Selektorer som <strong>pre code</strong> har høyere spesifisitet enn bare <strong>code</strong>, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.</p>
 </div>
 <div class="paragraph">
 <p>Moderne nettlesere støtter også <strong>has</strong>-selektor:</p>
@@ -1548,6 +1600,24 @@ A ~ B       B er senere søsken av A</code></pre>
 <div class="paragraph">
 <p>som formater <strong>pre</strong> kun hvis den inneholder bash-kode (støttes ikke overalt).</p>
 </div>
+<div class="paragraph">
+<p>Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men forhåpenlig er dette til en hjelp ffor enkelte.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_andre_hefter_i_serien"><a class="anchor" href="#_andre_hefter_i_serien"></a>📚 Andre hefter i serien</h3>
+<div class="paragraph">
+<p>📘 Linux: Det neste steget</p>
+</div>
+<div class="paragraph">
+<p>📘 Litt om Git</p>
+</div>
+<div class="paragraph">
+<p>📘 Litt om VS Code</p>
+</div>
+<div class="paragraph">
+<p>📘 Litt om GPG</p>
+</div>
 </div>
 </div>
 </div>
@@ -1555,7 +1625,7 @@ A ~ B       B er senere søsken av A</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0 2026-02-19<br>
-Last updated 2026-02-20 18:51:02 +0100
+Last updated 2026-02-21 20:22:52 +0100
 </div>
 </div>
 </body>
