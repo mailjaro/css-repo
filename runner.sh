@@ -38,6 +38,8 @@ sd '✔' 'Y' css-2.adoc
 sd '❌ ' ' - ' css-2.adoc
 sd '🔗 ' '' css-2.adoc
 sd '🔸 ' '' css-2.adoc
+sd '📚 ' '' css-2.adoc
+sd '📘 ' '' css-2.adoc
 sd '2️⃣ ' '2. ' css-2.adoc
 sd '3️⃣ ' '3. ' css-2.adoc
 sd '4️⃣ ' '4. ' css-2.adoc
