@@ -697,6 +697,8 @@ som formater **pre** kun hvis den inneholder bash-kode
 
 Vi kan også nevne at selektorer som **pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
 
+---
+
 Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men forhåpenlig er dette til en hjelp for enkelte.
 
 ## 📚 Andre hefter i serien

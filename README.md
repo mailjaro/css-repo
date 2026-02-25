@@ -15,7 +15,7 @@
 ✅ Husk: Avslutt enhver editering med
 
 - Lagre alle ulagrede filer
-- `./runner.sh`
+- `./runner.sh` (helst)
 - `git add -A`
 - `git commit -m "Beskrivelse"`
 - `git push`
