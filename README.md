@@ -3,6 +3,10 @@
 > Et kort, lite og praktisk hefte om CSS på Linux.  
 > Skrevet av Jan R Sandbakken.
 
+## Hovedfil
+
+Hovedfilen heter **css.md**. Øvrige filer og resten av denne README-filen er kun for stiling og produksjon i øvrige formater.
+
 ---
 
 ## ❗ Viktig info
@@ -25,9 +29,6 @@
 ---
 
 ## 📌 Om prosjektet
-
-- ⚙️ J
-- 🧩 U
 
 ## 🗂️ Struktur
 
