@@ -15,12 +15,12 @@
 ✅ Husk: Avslutt enhver editering med
 
 - Lagre alle ulagrede filer
-- `./runner.sh` (helst)
+- `./runner.sh` (anbefalt)
 - `git add -A`
 - `git commit -m "Beskrivelse"`
 - `git push`
 
-(Eller gjør det ekvivalente fra **VS Code**.)
+(eller det ekvivalente fra **VS Code**.)
 
 ---
 
@@ -31,10 +31,9 @@
 
 ## 🗂️ Struktur
 
-Her ser vi den fulle strukturen når alt er konvertert mog produsert (hvilket kan oppnås ved å kjøre skriptet `runner.sh`):
+Her ser vi den fulle strukturen når alt er konvertert og produsert (hvilket kan oppnås ved å kjøre skriptet `runner.sh`):
 
 ```text
-➜  tree
 .
 ├── builds
 │   ├── css-1.html
@@ -67,7 +66,7 @@ Her ser vi den fulle strukturen når alt er konvertert mog produsert (hvilket ka
     └── epub-light.css
 ```
 
-(Flere HTML/CSS-eksempler vil bli lagt til ettersom skrivingen skrider fram.)
+(Flere HTML/CSS-eksempler kan bli lagt til ved behov.)
 
 ## 📌 Eksport til EPUB
 
@@ -148,6 +147,8 @@ Opsjonene
 ```
 sørger for at en produsert CCS og bilde (forsidebilde) inkluderes direkte i HTML-filen (så den enkelt kan flyttes rundt).
 
+❗ **asciidoctor**-kommandoen kjøres av **runner.sh**, men tanken er at **css-1.adoc** også kan editeres/finpusses for ADOC-spesifikk formatering før man produserer HTML-format med denne kommandoen manuelt. Det anbefales selvsagt alltid å gjøre tekstlige editeringer, retting av trykkfeil etc, på hovedfilen **css.md** i forkant.
+
 ## 📌 Redigering av ADOC
 
 Man starter med å kopiere `css-1.adoc` til `css-2.adoc` (alle endringer gjøres så på sistnevnte):
@@ -182,6 +183,8 @@ sd '✔' 'Y' css-2.adoc
 sd '❌ ' ' - ' css-2.adoc
 sd '🔗 ' '' css-2.adoc
 ```
+
+❗ **asciidoctor**-kommandoen kjøres av **runner.sh**, men tanken er at **css-2.adoc** også kan editeres/finpusses for ADOC-spesifikk formatering før man produserer HTML-format med denne kommandoen manuelt. Det anbefales selvsagt alltid å gjøre tekstlige editeringer, retting av trykkfeil etc, på hovedfilen **css.md** i forkant.
 
 ## 📌 Redigert eksport til HTML
 
@@ -225,6 +228,8 @@ asciidoctor-pdf config/masterPDF.adoc \
                 --theme=styles/asciidoctor-default.yml \
                 -o builds/css.pdf
 ```
+
+❗ **asciidoctor-pdf**-kommandoen kjøres av **runner.sh**, men tanken er at **css-3.adoc** også kan editeres/finpusses før man produserer PDF-format med denne kommandoen manuelt. Det anbefales selvsagt alltid å gjøre tekstlige editeringer, retting av trykkfeil etc, på hovedfilen **css.md** i forkant.
 
 ## 🐚 Kommandoer samlet i et shell
 
