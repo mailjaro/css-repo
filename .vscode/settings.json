@@ -15,5 +15,6 @@
         "selektorer",
         "skriptet",
         "ulagrede"
-    ]
+    ],
+    "makefile.configureOnOpen": false
 }
