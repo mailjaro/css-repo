@@ -6,11 +6,13 @@ pandoc css.md  \
    --metadata-file=config/common.yaml \
    --css=styles/epub-dark.css -o \
    builds/css-dark.epub
+echo "✅ EPUB DARK successfully built."
 
 pandoc css.md  \
    --metadata-file=config/common.yaml \
    --css=styles/epub-light.css -o \
    builds/css-light.epub
+echo "✅ EPUB LIGHT successfully built."
 
 pandoc css.md --metadata-file=./config/common.yaml \
                  --wrap=none -f markdown-smart -o css-1.adoc
@@ -18,6 +20,7 @@ pandoc css.md --metadata-file=./config/common.yaml \
 asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
             -a data-uri \
             config/masterHTML-1.adoc -o builds/css-1.html
+echo "✅ HTML 1 successfully built."
 
 cp css-1.adoc css-2.adoc
 sd '\[source,text\]' '[%unbreakable]\n[source,text]' css-2.adoc
@@ -28,10 +31,12 @@ sd '\p{Extended_Pictographic}\uFE0F? ' '' css-2.adoc  # Fjerner emojis
 asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
             -a data-uri \
             config/masterHTML-2.adoc -o builds/css-2.html
+echo "✅ HTML 2 successfully built."
 
 cp css-2.adoc css-3.adoc
 
 asciidoctor-pdf config/masterPDF.adoc --theme=styles/asciidoctor-default.yml \
                 -o builds/css.pdf
+echo "✅ PDF successfully built."
 
 popd

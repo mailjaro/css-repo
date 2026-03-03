@@ -592,7 +592,7 @@ pre code.language-bash {
 der vi kun stiler forekomster av `<code class="language-bash">` som ligger inni en **pre** (en såkalt kombinert selektor), samt ved
 
 ```css
-pre .language-bash {
+div .language-bash {
     color: lightblue;
     background: darkblue;
 }
@@ -705,8 +705,8 @@ Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men f
 
 📘 Linux: Det neste steget
 
-📘 Litt om Git
+📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
 
-📘 Litt om VS Code
+📘 [Litt om VS Code](https://mailjaro.github.io/vscode-repo/)
 
-📘 Litt om GPG
+📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
