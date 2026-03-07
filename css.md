@@ -710,3 +710,5 @@ Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men f
 📘 [Litt om VS Code](https://mailjaro.github.io/vscode-repo/)
 
 📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
+
+📘 [[Litt om syntaksutheving]](https://mailjaro.github.io/highlight-repo/)
