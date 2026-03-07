@@ -44,10 +44,10 @@ css-1.adoc: $(MD) $(COMMON)
 	       -f markdown-smart -o $@
 
 # remove emojis when generating HTML2/PDF
-css-2.adoc: css-1.adoc
+css-2.css: css-1.adoc
 	@cp $< $@
-	@sd '❗' 'NOTE:' git-2.adoc
-	@sd '‼️' 'CAUTION:' git-2.adoc
+	@sd '❗' 'NOTE:' $@
+	@sd '‼️' 'CAUTION:' $@
 	@sd '\p{Extended_Pictographic}\uFE0F? ' '' $@
 
 # add unbreakable attributes before certain source blocks for PDF
@@ -71,6 +71,7 @@ $(HTML2): config/masterHTML-2.adoc css-2.adoc | $(BUILD)
 	@asciidoctor -a stylesheet=../$(ASCIIDOC_CSS) \
 	            -a data-uri config/masterHTML-2.adoc -o $@
 	@echo "✅ HTML 2 successfully built."
+
 # --- PDF -------------------------------------------------------------------
 pdf: $(PDF)
 

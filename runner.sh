@@ -26,8 +26,8 @@ cp css-1.adoc css-2.adoc
 sd '\[source,text\]' '[%unbreakable]\n[source,text]' css-2.adoc
 sd '\[source,css\]' '[%unbreakable]\n[source,css]' css-2.adoc
 sd '\[source,html\]' '[%unbreakable]\n[source,html]' css-2.adoc
-sd '❗' 'NOTE:' git-2.adoc
-sd '‼️' 'CAUTION:' git-2.adoc
+sd '❗' 'NOTE:' css-2.adoc
+sd '‼️' 'CAUTION:' css-2.adoc
 sd '\p{Extended_Pictographic}\uFE0F? ' '' css-2.adoc  # Fjerner emojis
 
 asciidoctor -a stylesheet=../styles/asciidoctor-default.css \
