@@ -711,4 +711,4 @@ Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men f
 
 📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
 
-📘 [[Litt om syntaksutheving]](https://mailjaro.github.io/highlight-repo/)
+📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)
