@@ -14,11 +14,15 @@ Prosjektet gir et kort og praktisk hefte om grunnleggende CSS.
 ├── builds
 │   ├── css-1.html
 │   ├── css-2.html
-│   ├── css-dark.epub
-│   ├── css-light.epub
+│   ├── css-asc-dark.epub
+│   ├── css-asc-light.epub
+│   ├── css-pan-dark.epub
+│   ├── css-pan-light.epub
 │   └── css.pdf
 ├── config
 │   ├── common.yaml
+│   ├── masterEPUB-dark.adoc
+│   ├── masterEPUB-light.adoc
 │   ├── masterHTML-1.adoc
 │   ├── masterHTML-2.adoc
 │   └── masterPDF.adoc
@@ -32,7 +36,7 @@ Prosjektet gir et kort og praktisk hefte om grunnleggende CSS.
 │   ├── test-display.css
 │   └── test-display.html
 ├── images
-│   └── css-cover.png
+│   └── cover.png
 ├── Makefile
 ├── README.md
 ├── runner.sh
@@ -50,7 +54,8 @@ De ulike formatene kan bygges ved **make** eller ved kjøring av skriptet **./ru
 Make-kommandoer:
 
 ```bash
-make epub     # genererer EPUB
+make epub1    # genererer EPUBs med pandoc
+make epub2    # genererer EPUBs med asciidoctor
 make html1    # generer HTML med emojis
 make html2    # generer HTML uten emojis
 make pdf      # generer PDF
@@ -63,24 +68,19 @@ make clean    # fjerner genererte filer
 2. Konverterer **css.md** til **css-1.adoc** ved pandoc   
 3. Produserer renset **css-2.adoc** fra **css-1.adoc** ved ulike **sd**-transformasjoner
 4. Juster og PDF-tilpasser **css-3.adoc** fra **css-2.adoc** ved ulike **sd**-transformasjoner
-5. Bygger HTML 1 og 2 med **asciidoctor**
-6. Bygger PDF med **asciidoctor-pdf**
+5. Produserer lys og mørk EPUB fra **css.md** via **asciidoctor**
+6. Bygger HTML 1 og 2 med **asciidoctor**
+7. Bygger PDF med **asciidoctor-pdf**
 
 ## 📁 Nøkkelfiler
 - Kilde: css.md  
-- Metadata:
-  - config/common.yml for EPUBs
-  - config/masterHTML-1.adoc for HTML1
-  - config/masterHTML-2.adoc for HTML2
-  - config/masterPDF.adoc for PDF
+- Metadata og masterfiler
+  - config/
 - Stiler:
-  - styles/epub-light.css for EPUBLYS
-  - styles/epub-dark.css for EPUBMØRK
-  - styles/asciidoctor-default.css for HTMLs
-  - styles/asciidoctor-default.yml for PDF
-- Verktøy: **pandoc**, **asciidoctor**, **asciidoctor-pdf**  og **sd**  
-- Testeksempler: examples/
-- Output: builds/  
+  - styles/
+- Verktøy: **pandoc**, **asciidoctor**, **asciidoctor-pdf**, **asciidoctor-epub3** og **sd**  
+- Output
+  - builds/  
 
 ## 💡 Tips
 

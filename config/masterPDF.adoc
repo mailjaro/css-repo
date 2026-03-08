@@ -3,7 +3,7 @@ Jan R Sandbakken <mailjaro@gmail.com>
 v1.0 2026-02-12
 :description: Dette heftet tar for seg grunnleggende CSS
 :doctype: book
-:front-cover-image: image:../images/css-cover.png[]
+:front-cover-image: image:../images/cover.png[]
 :title-page:
 :icons: font
 :toc: left

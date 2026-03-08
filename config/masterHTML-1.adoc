@@ -10,6 +10,7 @@ v1.0 2026-02-19
 :sectanchors:
 :source-highlighter: rouge
 :rouge-style: thankful_eyes
-image::../images/css-cover.png[role=cover,align=center]
+
+image::../images/cover.png[role=cover,align=center]
 
 include::../css-1.adoc[]
