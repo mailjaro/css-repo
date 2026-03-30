@@ -697,6 +697,8 @@ som formater **pre** kun hvis den inneholder bash-kode
 
 Vi kan også nevne at selektorer som **pre code** har høyere spesifisitet enn bare **code**, fordi den er mer presis. Men den er fortsatt svakere enn en CLASS eller ID.
 
+❗ Merk: Vi har ikke sett på praktiske tilfeller her. Disse stilen skal jo gjerne formatere noe tekst, hvilket betyr at selektorene kan omslutte `<p>`-avsnitt (eller`code`- eller `span`-tekst). I så fall er det disse som skal formateres. I eksemplene over utgjør selektorene heller en ytre ramme til avsnitt/tekst.
+
 ---
 
 Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men forhåpenlig er dette til en hjelp for enkelte.
