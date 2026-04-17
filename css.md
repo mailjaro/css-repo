@@ -705,17 +705,6 @@ Vi runder av med dette. Det er som sagt mye som ellers kunne vært dekket, men f
 
 ## 📚 Andre hefter i serien
 
-📘 [Linux for hjemmebruk](https://mailjaro.github.io/linux-repo/)
+For andre hefter i serien, se:
 
-📘 [Litt om Git](https://mailjaro.github.io/git-repo/)
-
-📘 [Litt om VS Code](https://mailjaro.github.io/vscode-repo/)
-
-📘 [Litt om GPG](https://mailjaro.github.io/gpg-repo/)
-
-📘 [Litt om syntaksutheving](https://mailjaro.github.io/highlight-repo/)
-
-📘 [Litt om Makefile](https://mailjaro.github.io/makefile-repo/)
-
-📘 [Moderne AI: Virkemåte](https://mailjaro.github.io/ai-repo/)
-
+📘 [Min startside på GitHub](https://mailjaro.github.io/)
